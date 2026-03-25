@@ -1,12 +1,12 @@
 # Cloude Code ToolBox
 
-**VS Code extension + monorepo:** [`Cloude-Code-ToolBox`](https://github.com/amitchorasiya/Cloude-Code-ToolBox) on GitHub · **License:** [MIT](LICENSE) · **Marketplace:** `amitchorasiya.cloude-code-toolbox-vscode` · **Extension version:** `1.0.6`
+**VS Code extension + monorepo:** [`Cloude-Code-ToolBox`](https://github.com/amitchorasiya/Cloude-Code-ToolBox) on GitHub · **License:** [MIT](LICENSE) · **Marketplace id:** `amitchorasiya.cloude-code-toolbox-vscode` · **Listing title:** *Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)* · **Version:** `1.0.6`
 
 ## After install: open Cloude Code ToolBox
 
 **There is no separate application**—the extension runs **inside Visual Studio Code** only.
 
-1. **Install** *Cloude Code ToolBox* from the Marketplace (or a `.vsix`). If VS Code prompts you, **reload the window** (**Developer: Reload Window**).
+1. **Install** from the Marketplace (search for the listing title **Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)**) or from a `.vsix`. If VS Code prompts you, **reload the window** (**Developer: Reload Window**).
 2. Find the **Activity Bar**: the **narrow column of icons on the far left** of the VS Code window (Explorer, Search, Source Control, …).
 3. Click the **Cloude Code ToolBox** icon added by this extension. The **Side Bar** opens next to it.
 4. In the Side Bar, click **MCP & skills**. That opens the **hub** (webview) with tabs **Intelligence**, **MCP**, **Skills**, and **Workspace**—that is the main surface for MCP, skills, and setup flows.
@@ -298,8 +298,9 @@ npm test
 
 ## Install the extension
 
-- **Marketplace:** search for **Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)** or install by id:  
+- **Marketplace:** search for **Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)** (the public listing name) or install by id:  
   `code --install-extension amitchorasiya.cloude-code-toolbox-vscode`
+- **In VS Code after install:** the **Activity Bar** and commands still show **Cloude Code ToolBox** (short UI label).
 - **From VSIX:** build with `npm run package` inside `packages/cloude-code-toolbox/`, then **Install from VSIX…** in VS Code.
 
 **If you had the old Marketplace id `amitchorasiya.cloude-code-toolbox`:** that slug is **permanently reserved** after the listing was removed; this repo now publishes as **`amitchorasiya.cloude-code-toolbox-vscode`** (install the new id above—your **settings** under `cloude-code-toolbox.*` are unchanged).

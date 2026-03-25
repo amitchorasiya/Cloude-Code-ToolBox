@@ -3,6 +3,7 @@
 ## 1.0.6
 
 - **Marketplace:** **`displayName`** set to **Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)**.
+- **Docs / site:** Root README and **GitHub Pages** (`docs/index.html`) now spell out the Marketplace listing title, id, and short VS Code UI label; refreshed page `<title>`, meta description, and CTA copy; `site.css?v=22`.
 
 ## 1.0.5
 
