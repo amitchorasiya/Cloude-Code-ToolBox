@@ -1,0 +1,6 @@
+Third-party content
+
+The Plan/Act workflow and memory-bank rule style are inspired by the MIT-licensed project:
+  https://github.com/tacticlaunch/cursor-bank
+
+Bundled Cursor rule templates in templates/cursor-rules/ are adapted for path templating ({{BANK_PATH}}) and corrected Markdown code fences; conceptual structure aligns with common “memory bank” community practice.

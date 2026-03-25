@@ -1,0 +1,16 @@
+{
+  "name": "cloude-code-toolbox-monorepo",
+  "private": true,
+  "description": "Monorepo: Cloude Code ToolBox (VS Code) and Cursor→Claude Code helpers. Build a VSIX with npm run package (runs packages/cloude-code-toolbox). Do not run npx vsce from the repo root — that manifest is not the extension.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "compile": "npm run compile --prefix packages/cloude-code-toolbox",
+    "test": "npm test --prefix packages/cloude-code-toolbox",
+    "package": "npm run package --prefix packages/cloude-code-toolbox",
+    "package:extension": "npm run package",
+    "serve:site": "npx --yes serve docs -l 5173"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "recipes": [
+    {
+      "id": "github-stdio-sample",
+      "label": "Sample: GitHub MCP (stdio, needs token)",
+      "description": "Adds a github server entry with env placeholder GITHUB_PERSONAL_ACCESS_TOKEN — replace in mcp.json after merge.",
+      "serverKey": "github",
+      "config": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github"],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": ""
+        }
+      }
+    }
+  ]
+}

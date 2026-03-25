@@ -1,0 +1,11 @@
+scripts/**
+.vsix-bridge-tgz/**
+.vscode/**
+.vscode-test/**
+src/**
+.gitignore
+**/tsconfig.json
+**/*.map
+**/*.ts
+# Do not ignore node_modules/** — vsce still only packs production deps (npm list --production),
+# but patterns here apply to those paths too; ignoring node_modules/** stripped the bundled bridge CLIs from the VSIX.

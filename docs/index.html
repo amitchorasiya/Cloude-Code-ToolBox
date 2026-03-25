@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cloude Code ToolBox — One place for Claude Code setup in VS Code</title>
+    <meta
+      name="description"
+      content="Cloude Code ToolBox for VS Code: One Click Setup and Thinking Machine Mode, MCP &amp; skills hub, Cursor and GitHub Copilot → Claude Code bridges, and context packs."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/site.css?v=21" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="logo" href="#">Cloude <span>Code ToolBox</span></a>
+        <nav class="nav-cta" aria-label="Primary">
+          <a
+            class="btn btn-primary"
+            href="vscode:extension/amitchorasiya.cloude-code-toolbox"
+            title="Opens Visual Studio Code to this extension if it is installed"
+            >Install in VS Code</a
+          >
+          <a class="btn btn-ghost" href="https://github.com/amitchorasiya/Cloude-Code-ToolBox">Source on GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <h1>One place for Claude Code-related setup.</h1>
+            <p class="lead">
+              Stop losing time to scattered rules, MCP config, and “skills” folders. Give your team a single, honest view
+              inside VS Code.
+            </p>
+            <div class="plain">
+              <strong>After you install:</strong> In VS Code, use the <strong>Activity Bar</strong> (icons on the
+              <strong>far left</strong>) → click <strong>Cloude Code ToolBox</strong> → in the <strong>Side Bar</strong> click
+              <strong>MCP &amp; skills</strong>. That opens the hub (Intelligence, MCP, Skills, Workspace). Reload the window
+              if you don’t see the icon yet.
+            </div>
+            <div class="plain">
+              <strong>In plain terms:</strong> Claude Code in VS Code only works as well as the setup around it—but that setup is
+              usually scattered across files, machines, and habits.
+              <strong>Cloude Code ToolBox</strong> is one dedicated <strong>toolbox in VS Code</strong>: see
+              what’s configured, standardize how teams adopt Claude Code (including from Cursor and optional GitHub Copilot migration steps), and build explicit context while each developer still <strong>chooses</strong> what to share.
+            </div>
+          </div>
+          <div class="hero-media">
+            <div class="hero-shot">
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="Where to open Cloude Code ToolBox — Activity Bar → Cloude Code ToolBox, then Side Bar → MCP &amp; skills"
+                src="screenshots/00-toolbox-access.png?v=0.1.0"
+                alt="VS Code: Activity Bar Cloude Code ToolBox icon and Side Bar MCP &amp; skills. Click to view fullscreen."
+                width="3024"
+                height="1732"
+                loading="eager"
+              />
+            </div>
+            <div class="hero-shot hero-shot-delay">
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="Intelligence tab — Cursor → VS Code &amp; Claude Code bridges (inside the hub)"
+                src="screenshots/01-intelligence.png?v=0.1.0"
+                alt="Cloude Code ToolBox hub: Intelligence tab with Cursor to VS Code and Claude Code bridges. Click to view fullscreen."
+                width="2476"
+                height="1594"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pillars" aria-labelledby="pillars-heading">
+        <div class="wrap">
+          <h2 id="pillars-heading">For engineering teams</h2>
+          <div class="pillar-grid">
+            <article class="pillar">
+              <h3>Faster path from Cursor to Claude Code</h3>
+              <p>Guided actions to port connections (MCP), rules, and scaffold a memory bank—without memorizing file formats.</p>
+            </article>
+            <article class="pillar">
+              <h3>Discover and add from one hub</h3>
+              <p>Browse MCP registry and skills catalogs, see what’s installed, fewer raw JSON edits by hand.</p>
+            </article>
+            <article class="pillar">
+              <h3>One checklist view</h3>
+              <p>Workspace vs personal setup, local skill folders, rules, <code>CLAUDE.md</code>, memory bank—aligned with what you shipped.</p>
+            </article>
+            <article class="pillar">
+              <h3>Smarter context for Claude Code</h3>
+              <p>Context packs and readiness flows with explicit choices so teams agree on what Claude Code is allowed to see.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="modes" aria-labelledby="modes-heading">
+        <div class="wrap">
+          <h2 id="modes-heading">One Click Setup &amp; Thinking Machine Mode</h2>
+          <p class="sub">
+            Two highlighted controls on the <strong>Intelligence</strong> tab turn messy, one-off Claude Code setup into something your team can repeat and reason about.
+          </p>
+          <div class="modes-grid">
+            <article class="mode-card">
+              <h3>One Click Setup</h3>
+              <p>
+                <strong>What it does:</strong> After you confirm you understand the risk, it runs the sequence you configured in Settings — typically migration tracks for <strong>Cursor → Claude Code</strong> and optional <strong>GitHub Copilot → Claude Code</strong>: port Cursor MCP into VS Code
+                <code>mcp.json</code>, Claude-oriented memory bank init, Cursor rules into <code>CLAUDE.md</code>, optional <code>.cursorrules</code> merge, skills
+                migration, MCP &amp; Skills awareness (under <code>.claude/</code>) with optional merge into <code>CLAUDE.md</code>, readiness summary, config scan, and follow-ups. Bridges use the
+                <strong>bundled Node CLIs</strong> shipped with the extension (no <code>npx</code> fetch).
+              </p>
+              <p>
+                <strong>Why it matters:</strong> Onboarding and “make this repo Claude-ready” shouldn’t depend on who remembers which README or which CLI flag. One Click encodes your
+                team’s playbook once, then anyone can execute the same steps and review the same terminals and files.
+              </p>
+            </article>
+            <article class="mode-card">
+              <h3>Thinking Machine Mode</h3>
+              <p>
+                <strong>What it does:</strong> A master switch for <strong>session priming</strong> — optional MCP &amp; Skills awareness (writes under <code>.claude/</code>) plus optional merge into <code>CLAUDE.md</code>, and a
+                <strong>context pack</strong> for Claude Code, with settings for confirmations and defaults. The first time you enable it, VS Code asks you to
+                <strong>Engage</strong> (or cancel to turn the mode off again). Turning the mode off clears that acknowledgment so the next enable shows the dialog again.
+              </p>
+              <p>
+                <strong>Why it matters:</strong> Claude Code works best when sessions start from <strong>accurate, explicit context</strong> — what MCP servers exist, where skills live, and a
+                structured snapshot of the workspace — not from guesswork. Thinking Machine Mode makes that priming a deliberate, repeatable gesture instead of a forgotten manual step.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery" aria-labelledby="gallery-heading">
+        <div class="wrap">
+          <h2 id="gallery-heading">What you get in VS Code</h2>
+          <p class="sub">
+            <strong>First:</strong> after install, open <strong>Cloude Code ToolBox</strong> in the <strong>Activity Bar</strong>
+            (left edge), then <strong>MCP &amp; skills</strong> in the <strong>Side Bar</strong>—that is the hub. Below:
+            access walkthrough, then high-resolution hub captures. <strong>Click any image</strong> for fullscreen.
+          </p>
+          <div class="shots">
+            <figure>
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="Open the hub — Activity Bar: Cloude Code ToolBox → Side Bar: MCP &amp; skills"
+                src="screenshots/00-toolbox-access.png?v=0.1.0"
+                alt="How to open Cloude Code ToolBox after install: Activity Bar and MCP &amp; skills. Click to view fullscreen."
+                width="3024"
+                height="1732"
+                loading="eager"
+              />
+              <figcaption>After install: Activity Bar → Cloude Code ToolBox → MCP &amp; skills · click to enlarge</figcaption>
+            </figure>
+            <figure>
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="Port Cursor — MCP, rules, memory bank to VS Code &amp; Claude Code"
+                src="screenshots/02-intelligence-cursor-port.png?v=0.1.0"
+                alt="Intelligence: Port Cursor MCP, rules, and memory bank to VS Code and Claude Code. Click to view fullscreen."
+                width="2482"
+                height="1600"
+                loading="lazy"
+              />
+              <figcaption>Port Cursor → VS Code + Claude Code · click image to enlarge</figcaption>
+            </figure>
+            <figure>
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="Cursor → VS Code &amp; Claude Code bridges"
+                src="screenshots/01-intelligence.png?v=0.1.0"
+                alt="Intelligence: Cursor to VS Code and Claude Code bridges. Click to view fullscreen."
+                width="2476"
+                height="1594"
+                loading="lazy"
+              />
+              <figcaption>Cursor → VS Code &amp; Claude Code bridges · click image to enlarge</figcaption>
+            </figure>
+            <figure>
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="Context &amp; readiness"
+                src="screenshots/02-intelligence-context-readiness.png?v=0.1.0"
+                alt="Context and readiness actions. Click to view fullscreen."
+                width="2484"
+                height="1592"
+                loading="lazy"
+              />
+              <figcaption>Context &amp; readiness · click image to enlarge</figcaption>
+            </figure>
+            <figure>
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="MCP — installed servers"
+                src="screenshots/03-mcp-browse-workspace-servers.png?v=0.1.0"
+                alt="MCP installed servers. Click to view fullscreen."
+                width="2468"
+                height="1596"
+                loading="lazy"
+              />
+              <figcaption>MCP — installed servers · click image to enlarge</figcaption>
+            </figure>
+            <figure>
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="MCP — registry browse"
+                src="screenshots/04-mcp-registry-search.png?v=0.1.0"
+                alt="MCP registry browse. Click to view fullscreen."
+                width="2470"
+                height="1596"
+                loading="lazy"
+              />
+              <figcaption>MCP — registry browse · click image to enlarge</figcaption>
+            </figure>
+            <figure>
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="Skills — skills.sh catalog"
+                src="screenshots/05-skills-catalog-skills-sh.png?v=0.1.0"
+                alt="Skills catalog. Click to view fullscreen."
+                width="2466"
+                height="1596"
+                loading="lazy"
+              />
+              <figcaption>Skills — skills.sh catalog · click image to enlarge</figcaption>
+            </figure>
+            <figure>
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="Skills — installed"
+                src="screenshots/06-skills-installed-local.png?v=0.1.0"
+                alt="Installed local skills. Click to view fullscreen."
+                width="2490"
+                height="1590"
+                loading="lazy"
+              />
+              <figcaption>Skills — installed · click image to enlarge</figcaption>
+            </figure>
+            <figure>
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="Workspace checklist"
+                src="screenshots/07-workspace-checklist.png?v=0.1.0"
+                alt="Workspace checklist. Click to view fullscreen."
+                width="2490"
+                height="1594"
+                loading="lazy"
+              />
+              <figcaption>Workspace checklist · click image to enlarge</figcaption>
+            </figure>
+            <figure>
+              <img
+                class="zoomable"
+                tabindex="0"
+                data-caption="Intelligence — context hygiene"
+                src="screenshots/08-workspace-toolbox-commands.png?v=0.1.0"
+                alt="Context hygiene and quick actions. Click to view fullscreen."
+                width="2490"
+                height="1608"
+                loading="lazy"
+              />
+              <figcaption>Intelligence — context hygiene · click image to enlarge</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-band" aria-labelledby="cta-heading">
+        <div class="wrap">
+          <h2 id="cta-heading">Ready in the Marketplace</h2>
+          <p>Install the extension, open <strong>Cloude Code ToolBox</strong> in the activity bar, then <strong>MCP &amp; skills</strong>.</p>
+          <a
+            class="btn btn-primary"
+            href="vscode:extension/amitchorasiya.cloude-code-toolbox"
+            title="Opens Visual Studio Code to this extension if it is installed"
+            >Install Cloude Code ToolBox</a
+          >
+          <p class="cta-fallback">
+            VS Code did not open?
+            <a href="https://marketplace.visualstudio.com/items?itemName=amitchorasiya.cloude-code-toolbox">Open the Marketplace in your browser</a>
+            instead.
+          </p>
+          <p class="mono-hint">code --install-extension amitchorasiya.cloude-code-toolbox</p>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="lightbox-root"
+      class="lightbox-root"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Fullscreen screenshot"
+    >
+      <button type="button" class="lightbox-scrim" aria-label="Close enlarged image"></button>
+      <figure class="lightbox-frame">
+        <button type="button" class="lightbox-close" aria-label="Close fullscreen view">&times;</button>
+        <img src="" alt="" width="3024" height="1732" decoding="async" />
+        <figcaption class="lightbox-caption"></figcaption>
+      </figure>
+    </div>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          <a href="https://github.com/amitchorasiya/Cloude-Code-ToolBox">Cloude-Code-ToolBox</a> ·
+          <a href="https://github.com/amitchorasiya/Cloude-Code-ToolBox/blob/main/README.md#disclaimer">MIT License &amp; disclaimer</a>
+        </p>
+        <p class="site-disclaimer">
+          Independent project—not affiliated with, endorsed by, or sponsored by Microsoft, GitHub, Cursor, OpenAI, or
+          Anthropic. Product names may be trademarks of their owners. Software is provided under the MIT License
+          <strong>as&nbsp;is</strong>, without warranty. You are responsible for third-party
+          MCP servers, npm packages, and configs you run or connect.
+        </p>
+      </div>
+    </footer>
+    <script>
+      (function () {
+        var root = document.getElementById("lightbox-root");
+        if (!root) return;
+        var scrim = root.querySelector(".lightbox-scrim");
+        var closeBtn = root.querySelector(".lightbox-close");
+        var lbImg = root.querySelector(".lightbox-frame img");
+        var cap = root.querySelector(".lightbox-caption");
+
+        function openFrom(el) {
+          lbImg.src = el.currentSrc || el.src;
+          lbImg.alt = (el.alt || "").replace(/\s*Click to view fullscreen\.?\s*$/i, "").trim();
+          cap.textContent = el.getAttribute("data-caption") || "";
+          root.hidden = false;
+          document.body.classList.add("lightbox-open");
+          closeBtn.focus();
+        }
+
+        function close() {
+          root.hidden = true;
+          lbImg.removeAttribute("src");
+          lbImg.alt = "";
+          cap.textContent = "";
+          document.body.classList.remove("lightbox-open");
+        }
+
+        document.querySelectorAll("img.zoomable").forEach(function (img) {
+          img.addEventListener("click", function () {
+            openFrom(img);
+          });
+          img.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              openFrom(img);
+            }
+          });
+        });
+
+        scrim.addEventListener("click", close);
+        closeBtn.addEventListener("click", close);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && !root.hidden) {
+            e.preventDefault();
+            close();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

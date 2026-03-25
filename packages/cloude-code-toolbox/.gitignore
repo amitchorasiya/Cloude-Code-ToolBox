@@ -1,0 +1,11 @@
+node_modules/
+out/
+*.vsix
+.agent-smoke.txt
+.vitest-output.txt
+.vitest-exit.txt
+.compile-test.log
+scripts/.README.extension.md.stash
+.vsix-bridge-tgz/
+# Ephemeral README screenshots during `npm run package` (copied from monorepo screenshots/)
+media/readme/

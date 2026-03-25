@@ -1,0 +1,19 @@
+{
+  "name": "cursor-mcp-vscode-port",
+  "version": "1.0.2",
+  "description": "Port Cursor ~/.cursor/mcp.json to VS Code User or workspace mcp.json for native MCP",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/convert.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "bin": {
+    "cursor-mcp-vscode-port": "./bin/cli.mjs"
+  },
+  "files": ["bin", "lib", "README.md"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "model-context-protocol", "cursor", "vscode"],
+  "license": "MIT"
+}

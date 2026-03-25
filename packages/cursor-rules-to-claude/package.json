@@ -1,0 +1,20 @@
+{
+  "name": "cursor-rules-to-claude",
+  "version": "0.2.0",
+  "description": "Convert Cursor .cursor/rules (*.mdc) to CLAUDE.md and .claude/rules for Claude Code",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "cursor-rules-to-claude": "bin/cli.js"
+  },
+  "files": ["bin", "lib", "README.md"],
+  "scripts": {
+    "start": "node bin/cli.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  }
+}

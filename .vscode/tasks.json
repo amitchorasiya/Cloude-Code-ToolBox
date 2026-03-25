@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "compile",
+      "path": "packages/cloude-code-toolbox",
+      "group": "build",
+      "label": "npm: compile - cloude-code-toolbox",
+      "problemMatcher": ["$tsc"]
+    }
+  ]
+}
