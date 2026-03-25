@@ -1,8 +1,11 @@
 /**
  * Stages the monorepo root README as packages/cloude-code-toolbox/README.md for vsce
- * (copies screenshots into media/readme/ so images work offline and in VSIX without relying
- * on raw.githubusercontent.com), rewrites repo links to github.com, runs vsce package,
- * then restores the extension README and removes media/readme/.
+ * (screenshots + relative links → github.com / raw.githubusercontent.com), runs vsce package,
+ * then restores the extension README from a stash file.
+ *
+ * Same pattern as Github-Copilot-ToolBox: Marketplace README uses absolute raw GitHub URLs for
+ * screenshots so images resolve from `main` (monorepo-safe). GitHub Pages `docs/index.html`
+ * uses the same raw URLs.
  *
  * Bridge CLIs are `file:../…` symlinks during dev; `vsce` runs `npm list --production`, which
  * fails for symlinked packages’ nested deps. We temporarily repoint `package.json` to `npm pack`
@@ -27,37 +30,23 @@ const BRIDGE_FOLDERS = [
 ];
 
 const GITHUB_REPO = "https://github.com/amitchorasiya/Cloude-Code-ToolBox";
+const RAW_MAIN =
+  "https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main";
 
-/** README image paths bundled into the VSIX (resolved relative to extension root). */
-const README_MEDIA_PREFIX = "media/readme";
-
-/**
- * Copy monorepo /screenshots/*.png into extension media/readme/ for vsce.
- * VS Code resolves README images relative to the extension package; raw GitHub URLs often
- * break for VSIX-only installs or before push.
- */
-function copyScreenshotsForVsixReadme(monorepoScreenshotsDir, destDir) {
-  fs.rmSync(destDir, { recursive: true, force: true });
-  fs.mkdirSync(destDir, { recursive: true });
-  if (!fs.existsSync(monorepoScreenshotsDir)) {
-    console.warn("[package-extension] No screenshots dir:", monorepoScreenshotsDir);
-    return;
-  }
-  const names = fs.readdirSync(monorepoScreenshotsDir).filter((f) => f.endsWith(".png"));
-  for (const name of names) {
-    fs.copyFileSync(
-      path.join(monorepoScreenshotsDir, name),
-      path.join(destDir, name),
+function transformRootReadmeForMarketplace(text, screenshotCacheVersion) {
+  let s = text;
+  s = s.replaceAll("](screenshots/", `](${RAW_MAIN}/screenshots/`);
+  if (screenshotCacheVersion) {
+    const escapedRaw = RAW_MAIN.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp(
+      `\\]\\(${escapedRaw}/screenshots/([^)]+\\.png)\\)`,
+      "g",
+    );
+    s = s.replace(
+      re,
+      `](${RAW_MAIN}/screenshots/$1?v=${encodeURIComponent(screenshotCacheVersion)})`,
     );
   }
-  if (names.length === 0) {
-    console.warn("[package-extension] No .png files in", monorepoScreenshotsDir);
-  }
-}
-
-function transformRootReadmeForMarketplace(text) {
-  let s = text;
-  s = s.replaceAll("](screenshots/", `](${README_MEDIA_PREFIX}/`);
   s = s.replaceAll("](LICENSE)", `](${GITHUB_REPO}/blob/main/LICENSE)`);
   s = s.replaceAll(
     "](.vscode/launch.json)",
@@ -142,8 +131,6 @@ function switchExtensionDepsToTarballs(tgzDir) {
 
 const extensionReadme = path.join(EXT_ROOT, "README.md");
 const rootReadme = path.join(MONOREPO_ROOT, "README.md");
-const monorepoScreenshots = path.join(MONOREPO_ROOT, "screenshots");
-const readmeMediaDir = path.join(EXT_ROOT, README_MEDIA_PREFIX);
 
 if (!fs.existsSync(rootReadme)) {
   console.error("Missing monorepo README:", rootReadme);
@@ -154,8 +141,13 @@ fs.copyFileSync(extensionReadme, STASH);
 let exitCode = 0;
 let pkgJsonOriginal = null;
 try {
-  copyScreenshotsForVsixReadme(monorepoScreenshots, readmeMediaDir);
-  const body = transformRootReadmeForMarketplace(fs.readFileSync(rootReadme, "utf8"));
+  const { version } = JSON.parse(
+    fs.readFileSync(path.join(EXT_ROOT, "package.json"), "utf8"),
+  );
+  const body = transformRootReadmeForMarketplace(
+    fs.readFileSync(rootReadme, "utf8"),
+    version,
+  );
   fs.writeFileSync(extensionReadme, body, "utf8");
   execSync(
     "npx --yes @resvg/resvg-js-cli resources/icon-marketplace.svg resources/marketplace-icon.png --fit-width 128 --fit-height 128",
@@ -165,15 +157,8 @@ try {
   fs.rmSync(TGZ_DIR, { recursive: true, force: true });
   packBridgeTarballs(TGZ_DIR);
   pkgJsonOriginal = switchExtensionDepsToTarballs(TGZ_DIR);
-  // Keep devDependencies (TypeScript, @vscode/vsce) — `vscode:prepublish` runs `tsc` during vsce pack.
   execSync("npm install --no-audit --no-fund", { cwd: EXT_ROOT, stdio: "inherit" });
-  // Keep README image links as `media/readme/…` (bundled in the VSIX). Default vsce rewrites
-  // relative image URLs to github.com/.../raw/HEAD/... at repo root, which breaks monorepos
-  // (and 404s when media/readme is not committed).
-  execSync("npx vsce package --no-rewrite-relative-links", {
-    cwd: EXT_ROOT,
-    stdio: "inherit",
-  });
+  execSync("npx vsce package", { cwd: EXT_ROOT, stdio: "inherit" });
 } catch (e) {
   console.error(e);
   exitCode = typeof e?.status === "number" ? e.status : 1;
@@ -187,7 +172,6 @@ try {
     }
   }
   fs.rmSync(TGZ_DIR, { recursive: true, force: true });
-  fs.rmSync(readmeMediaDir, { recursive: true, force: true });
   if (fs.existsSync(STASH)) {
     fs.copyFileSync(STASH, extensionReadme);
     fs.unlinkSync(STASH);

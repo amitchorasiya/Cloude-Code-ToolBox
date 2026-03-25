@@ -81,7 +81,7 @@ The extension does **not** replace Claude Code or Cursor; it helps you **align c
 
 ### See the real UI (screenshots)
 
-These are **actual VS Code UI captures** from the extension—what users see on screen. **How to open the hub** (Activity Bar → Cloude Code ToolBox → **MCP & skills**) is at the top: [After install: open Cloude Code ToolBox](#after-install-open-cloude-code-toolbox). Most hub shots below are **high-resolution** (~2.5k width) so labels stay readable in README and on the [project site](https://amitchorasiya.github.io/Cloude-Code-ToolBox/) (GitHub Pages from `/docs`; a [custom domain](docs/PAGES-SETUP.md) may also point here).
+These are **actual VS Code UI captures** from the extension—what users see on screen. **How to open the hub** (Activity Bar → Cloude Code ToolBox → **MCP & skills**) is at the top: [After install: open Cloude Code ToolBox](#after-install-open-cloude-code-toolbox). Most hub shots below are **high-resolution** (~2.5k width) so labels stay readable in README and on the [project site](https://amitchorasiya.github.io/Cloude-Code-ToolBox/) (GitHub Pages from `/docs`; gallery images load from **`raw.githubusercontent.com`** on `main`, same pattern as [Github-Copilot-ToolBox](https://github.com/amitchorasiya/Github-Copilot-ToolBox)). A [custom domain](docs/PAGES-SETUP.md) may also point here.
 
 **Intelligence** (hub): **Port Cursor → VS Code + Claude Code** (MCP, rules, memory bank), then broader bridges, context pack, readiness, MCP & Skills scan.
 
@@ -375,7 +375,7 @@ npm run package          # stages monorepo README (+ screenshot URLs) for Market
 # npx vsce publish       # when you are logged in to the publisher (from this directory)
 ```
 
-The `.vsix` **README** is the **monorepo root** [`README.md`](README.md) (same content as on GitHub), with `screenshots/*.png` **copied into** `packages/cloude-code-toolbox/media/readme/` and image links rewritten to **`media/readme/…`**. The pack script runs **`vsce package --no-rewrite-relative-links`** so those paths stay **relative** inside the VSIX (default vsce rewrites them to `github.com/.../raw/HEAD/...` at the **repo root**, which breaks monorepos and VSIX-only installs). Other repo links in the staged README are turned into absolute GitHub URLs before packaging. [`packages/cloude-code-toolbox/README.md`](packages/cloude-code-toolbox/README.md) is restored after each package run. Do not use **`package:extension-readme-only`** for a real publish—that skips this flow and README images break.
+The `.vsix` **README** is the **monorepo root** [`README.md`](README.md) (same content as on GitHub), with image paths rewritten to **`raw.githubusercontent.com/.../main/screenshots/…`** (plus a cache-busting `?v=` from the extension version) so the Marketplace and offline `.vsix` details view load screenshots from GitHub—same approach as [Github-Copilot-ToolBox](https://github.com/amitchorasiya/Github-Copilot-ToolBox). Other repo links in the staged README are turned into absolute GitHub URLs before packaging. [`packages/cloude-code-toolbox/README.md`](packages/cloude-code-toolbox/README.md) is restored after each package run. Do not use **`package:extension-readme-only`** for a real publish—that skips this flow and README images break.
 
 From monorepo root: `npm run package:extension` (after `npm install` in the package directory).
 

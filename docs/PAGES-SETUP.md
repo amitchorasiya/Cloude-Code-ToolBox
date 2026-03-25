@@ -34,8 +34,7 @@ cd docs && python3 -m http.server 8080
 
 Open **http://localhost:8080**.
 
-**Screenshots:** `docs/index.html` uses **relative** `screenshots/*.png` under this folder (`docs/screenshots/`), so GitHub Pages does not depend on `raw.githubusercontent.com`. After you replace captures in the monorepo root `screenshots/`, copy them here:  
-`cp ../screenshots/*.png docs/screenshots/` (from repo root) so the site stays in sync.
+**Screenshots:** `docs/index.html` loads gallery images from **`raw.githubusercontent.com`** (same as [Github-Copilot-ToolBox](https://github.com/amitchorasiya/Github-Copilot-ToolBox)). After you push new captures to **`main`** under the monorepo root `screenshots/`, the site picks them up automatically (refresh cache with the `?v=` query on each URL when you change files).
 
 ## Publish on GitHub Pages
 

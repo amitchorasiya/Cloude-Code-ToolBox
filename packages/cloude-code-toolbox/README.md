@@ -2,7 +2,7 @@
 
 ## Packaging note
 
-`npm run package` in this folder **stages** the [monorepo root `README.md`](../../README.md) into this file for the `.vsix` / Marketplace: it **copies** `../../screenshots/*.png` into **`media/readme/`** and rewrites image links to **`media/readme/…`** so Extension details show screenshots without hitting GitHub. It then **restores** this extension reference README and deletes **`media/readme/`**. Avoid **`package:extension-readme-only`** for publishing—that skips the copy step and README images break in the installed extension.
+`npm run package` in this folder **stages** the [monorepo root `README.md`](../../README.md) into this file for the `.vsix` / Marketplace: screenshot links become absolute **`raw.githubusercontent.com/.../main/screenshots/…`** URLs (with `?v=` cache-bust from `package.json` version), matching [Github-Copilot-ToolBox](https://github.com/amitchorasiya/Github-Copilot-ToolBox). It then **restores** this extension reference README. Avoid **`package:extension-readme-only`** for publishing—that skips the staging step and README images break.
 
 **Identity:** **Marketplace ID** `amitchorasiya.cloude-code-toolbox` · **npm extension package name** `cloude-code-toolbox` · **Monorepo** [Cloude-Code-ToolBox](https://github.com/amitchorasiya/Cloude-Code-ToolBox) · this folder is `packages/cloude-code-toolbox/`.
 
@@ -64,7 +64,7 @@ For a **full control-by-control** hub reference (every tab, chip, and tile), see
 
 **Commands:** `CloudeCodeToolBox.*`. **Settings:** `cloude-code-toolbox.*` (legacy `CloudeCodeToolBox.*` values migrate on load).
 
-In this repo, screenshots for this README use **absolute** `raw.githubusercontent.com` URLs so they render on GitHub. The **`npm run package`** flow replaces them with **bundled** `media/readme/` paths for the `.vsix`.
+In this repo, the extension reference README keeps **absolute** `raw.githubusercontent.com` URLs for screenshots. **`npm run package`** temporarily replaces this file with the transformed monorepo README (same raw URLs + `?v=`) for the `.vsix`, then restores this file.
 
 ---
 
