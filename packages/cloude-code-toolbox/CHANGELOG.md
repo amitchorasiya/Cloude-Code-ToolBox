@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0
+
+Stable **1.0** release (version bump from 0.1.0). No functional change from 0.1.0 beyond semver and docs/cache-bust alignment for Marketplace and GitHub Pages screenshots.
+
 ## 0.1.0
 
 Initial **Cloude Code ToolBox** public version (semver reset). MCP & skills hub, Thinking Machine Mode, dual-track **One Click Setup** (Cursor → Claude Code and GitHub Copilot → Claude Code), bundled bridge CLIs, awareness under `.claude/` and merges into `CLAUDE.md`, Intelligence tiles for Copilot → Claude migration, and Claude Code–oriented readiness and config scan.

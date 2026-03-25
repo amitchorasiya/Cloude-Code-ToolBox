@@ -18,7 +18,7 @@
 
 **Missing the icon?** **Command Palette** (**Ctrl+Shift+P** / **⌘⇧P**) → type **Cloude Code ToolBox** → run a command, or **Developer: Reload Window**, then repeat steps 2–3.
 
-![Activity Bar → Cloude Code ToolBox; Side Bar → MCP & skills hub](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/00-toolbox-access.png?v=0.1.0)
+![Activity Bar → Cloude Code ToolBox; Side Bar → MCP & skills hub](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/00-toolbox-access.png?v=1.0.0)
 
 ---
 
@@ -74,27 +74,27 @@ Real VS Code UI (not mockups). **Opening the hub:** [After install](#after-insta
 
 **Intelligence:** Cursor → VS Code + Claude Code bridges, context pack, readiness, MCP & Skills awareness.
 
-![Intelligence: Port Cursor MCP, rules, and memory bank to VS Code + Claude Code](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/02-intelligence-cursor-port.png?v=0.1.0)
+![Intelligence: Port Cursor MCP, rules, and memory bank to VS Code + Claude Code](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/02-intelligence-cursor-port.png?v=1.0.0)
 
-![Intelligence tab: Cursor to VS Code + Claude Code bridges](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/01-intelligence.png?v=0.1.0)
+![Intelligence tab: Cursor to VS Code + Claude Code bridges](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/01-intelligence.png?v=1.0.0)
 
-![Intelligence: context pack and readiness actions](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/02-intelligence-context-readiness.png?v=0.1.0)
+![Intelligence: context pack and readiness actions](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/02-intelligence-context-readiness.png?v=1.0.0)
 
 **MCP** and **Skills** tabs: installed servers, registry browse, skills.sh, local `SKILL.md` trees.
 
-![MCP: installed workspace servers](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/03-mcp-browse-workspace-servers.png?v=0.1.0)
+![MCP: installed workspace servers](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/03-mcp-browse-workspace-servers.png?v=1.0.0)
 
-![MCP: registry browse & search](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/04-mcp-registry-search.png?v=0.1.0)
+![MCP: registry browse & search](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/04-mcp-registry-search.png?v=1.0.0)
 
-![Skills: catalog (skills.sh)](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/05-skills-catalog-skills-sh.png?v=0.1.0)
+![Skills: catalog (skills.sh)](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/05-skills-catalog-skills-sh.png?v=1.0.0)
 
-![Skills: installed local skill folders](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/06-skills-installed-local.png?v=0.1.0)
+![Skills: installed local skill folders](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/06-skills-installed-local.png?v=1.0.0)
 
 **Workspace** checklist and **Intelligence** context hygiene.
 
-![Workspace kit checklist](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/07-workspace-checklist.png?v=0.1.0)
+![Workspace kit checklist](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/07-workspace-checklist.png?v=1.0.0)
 
-![Intelligence: context hygiene and quick actions](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/08-workspace-toolbox-commands.png?v=0.1.0)
+![Intelligence: context hygiene and quick actions](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/08-workspace-toolbox-commands.png?v=1.0.0)
 
 **Reference diagram:** no PNG ships in `screenshots/` for the capability map right now. Source: [`diagrams/mermaid-copilot-map.mmd`](https://github.com/amitchorasiya/Cloude-Code-ToolBox/blob/main/diagrams/mermaid-copilot-map.mmd) — export to PNG and add `screenshots/mermaid-claude-map.png` if you want an embedded diagram here again.
 

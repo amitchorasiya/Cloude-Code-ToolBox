@@ -2,7 +2,7 @@
   "name": "cloude-code-toolbox",
   "displayName": "Cloude Code ToolBox",
   "description": "Cloude Code ToolBox: MCP hub, workspace helpers, Thinking Machine Mode (context packs and priming), readiness, and bridges from Cursor to Claude Code in VS Code. Not affiliated with Anthropic. See README disclaimer.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "publisher": "amitchorasiya",
   "author": "amitchorasiya",
   "license": "MIT",

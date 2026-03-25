@@ -1,6 +1,6 @@
 # Cloude Code ToolBox
 
-**VS Code extension + monorepo:** [`Cloude-Code-ToolBox`](https://github.com/amitchorasiya/Cloude-Code-ToolBox) on GitHub · **License:** [MIT](LICENSE) · **Marketplace:** `amitchorasiya.cloude-code-toolbox` · **Extension version:** `0.1.0`
+**VS Code extension + monorepo:** [`Cloude-Code-ToolBox`](https://github.com/amitchorasiya/Cloude-Code-ToolBox) on GitHub · **License:** [MIT](LICENSE) · **Marketplace:** `amitchorasiya.cloude-code-toolbox` · **Extension version:** `1.0.0`
 
 ## After install: open Cloude Code ToolBox
 
