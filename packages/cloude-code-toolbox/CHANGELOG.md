@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.0.6
+
+- **Marketplace:** **`displayName`** set to **Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)**.
+
+## 1.0.5
+
+- **Marketplace:** **`displayName`** set to **Cloude Code ToolBox (MCP, skills, Cursor/Copilot→Claude)**.
+
+## 1.0.4
+
+- **Marketplace:** **`displayName`** is **Cloude Code ToolBox** again (short title only).
+
+## 1.0.3
+
+- **Marketplace:** Unique **`displayName`**: **Cloude Code ToolBox — Claude Code & MCP** (plain **Cloude Code ToolBox** was rejected as already taken—often reserved after a removed listing). Activity Bar / hub branding in VS Code is unchanged.
+
+## 1.0.2
+
+- **Marketplace:** Extension **`name`** / id is now **`cloude-code-toolbox-vscode`** (`amitchorasiya.cloude-code-toolbox-vscode`). The previous slug **`cloude-code-toolbox` cannot be reused** after the listing was removed—Marketplace reserves it permanently ([publishing docs](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#removing-an-extension)). README and site install links updated; settings still use **`cloude-code-toolbox.*`**.
+
+## 1.0.1
+
+- **Marketplace metadata:** Align `package.json` description with **GitHub Copilot Toolbox** (Microsoft/GitHub/Anthropic disclaimer + **NOTICE** attribution). Add **`NOTICE`** beside **LICENSE**. README: drop `github.io` and `mermaid.live` hyperlinks from the packaged overview (use repo `/docs` tree and local Mermaid export only) and clarify that **Cloude Code ToolBox** is an independent brand vs Anthropic **Claude**.
+
 ## 1.0.0
 
 Stable **1.0** release (version bump from 0.1.0). No functional change from 0.1.0 beyond semver and docs/cache-bust alignment for Marketplace and GitHub Pages screenshots.

@@ -69,6 +69,10 @@ function transformRootReadmeForMarketplace(text, screenshotCacheVersion) {
     `](${GITHUB_REPO}/blob/main/packages/cloude-code-toolbox/LICENSE)`,
   );
   s = s.replaceAll(
+    "](packages/cloude-code-toolbox/NOTICE)",
+    `](${GITHUB_REPO}/blob/main/packages/cloude-code-toolbox/NOTICE)`,
+  );
+  s = s.replaceAll(
     "](packages/cloude-code-toolbox/)",
     `](${GITHUB_REPO}/tree/main/packages/cloude-code-toolbox/)`,
   );

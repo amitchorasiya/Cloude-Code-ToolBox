@@ -1,6 +1,6 @@
 # Cloude Code ToolBox
 
-**VS Code extension + monorepo:** [`Cloude-Code-ToolBox`](https://github.com/amitchorasiya/Cloude-Code-ToolBox) on GitHub · **License:** [MIT](LICENSE) · **Marketplace:** `amitchorasiya.cloude-code-toolbox` · **Extension version:** `1.0.0`
+**VS Code extension + monorepo:** [`Cloude-Code-ToolBox`](https://github.com/amitchorasiya/Cloude-Code-ToolBox) on GitHub · **License:** [MIT](LICENSE) · **Marketplace:** `amitchorasiya.cloude-code-toolbox-vscode` · **Extension version:** `1.0.6`
 
 ## After install: open Cloude Code ToolBox
 
@@ -81,7 +81,7 @@ The extension does **not** replace Claude Code or Cursor; it helps you **align c
 
 ### See the real UI (screenshots)
 
-These are **actual VS Code UI captures** from the extension—what users see on screen. **How to open the hub** (Activity Bar → Cloude Code ToolBox → **MCP & skills**) is at the top: [After install: open Cloude Code ToolBox](#after-install-open-cloude-code-toolbox). Most hub shots below are **high-resolution** (~2.5k width) so labels stay readable in README and on the [project site](https://amitchorasiya.github.io/Cloude-Code-ToolBox/) (GitHub Pages from `/docs`; gallery images load from **`raw.githubusercontent.com`** on `main`, same pattern as [Github-Copilot-ToolBox](https://github.com/amitchorasiya/Github-Copilot-ToolBox)). A [custom domain](docs/PAGES-SETUP.md) may also point here.
+These are **actual VS Code UI captures** from the extension—what users see on screen. **How to open the hub** (Activity Bar → Cloude Code ToolBox → **MCP & skills**) is at the top: [After install: open Cloude Code ToolBox](#after-install-open-cloude-code-toolbox). Most hub shots below are **high-resolution** (~2.5k width) so labels stay readable in README and on the [static site sources in `/docs`](https://github.com/amitchorasiya/Cloude-Code-ToolBox/tree/main/docs) (GitHub Pages from that folder; gallery images load from **`raw.githubusercontent.com`** on `main`, same pattern as [Github-Copilot-ToolBox](https://github.com/amitchorasiya/Github-Copilot-ToolBox)). See [Pages setup](docs/PAGES-SETUP.md) for the public URL and optional custom domain.
 
 **Intelligence** (hub): **Port Cursor → VS Code + Claude Code** (MCP, rules, memory bank), then broader bridges, context pack, readiness, MCP & Skills scan.
 
@@ -109,7 +109,7 @@ These are **actual VS Code UI captures** from the extension—what users see on 
 
 ![Intelligence: context hygiene, snapshot, and quick actions](screenshots/08-workspace-toolbox-commands.png)
 
-**Reference diagram:** there is no exported PNG in `screenshots/` right now. Regenerate from [`diagrams/mermaid-copilot-map.mmd`](diagrams/mermaid-copilot-map.mmd) (e.g. Mermaid CLI or [mermaid.live](https://mermaid.live)) and save as `screenshots/mermaid-claude-map.png` if you want this image back in the README.
+**Reference diagram:** there is no exported PNG in `screenshots/` right now. Regenerate from [`diagrams/mermaid-copilot-map.mmd`](diagrams/mermaid-copilot-map.mmd) with the Mermaid CLI (or any local exporter) and save as `screenshots/mermaid-claude-map.png` if you want this image back in the README.
 
 ---
 
@@ -298,9 +298,11 @@ npm test
 
 ## Install the extension
 
-- **Marketplace:** search for **Cloude Code ToolBox** or install by id:  
-  `code --install-extension amitchorasiya.cloude-code-toolbox`
+- **Marketplace:** search for **Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)** or install by id:  
+  `code --install-extension amitchorasiya.cloude-code-toolbox-vscode`
 - **From VSIX:** build with `npm run package` inside `packages/cloude-code-toolbox/`, then **Install from VSIX…** in VS Code.
+
+**If you had the old Marketplace id `amitchorasiya.cloude-code-toolbox`:** that slug is **permanently reserved** after the listing was removed; this repo now publishes as **`amitchorasiya.cloude-code-toolbox-vscode`** (install the new id above—your **settings** under `cloude-code-toolbox.*` are unchanged).
 
 **Requirements:** VS Code **1.99+**, **Claude Code** extension, **Node.js 20+** for bundled CLIs and optional `npx` bridges. **Git** on `PATH` for optional Intelligence “include git” (Windows: [Git for Windows](https://git-scm.com/download/win)).
 
@@ -430,7 +432,7 @@ This repository is released under the **MIT License**. See [LICENSE](LICENSE). T
 
 ## Disclaimer
 
-**Independence and trademarks.** This monorepo is **independent** community tooling. It is **not** affiliated with, endorsed by, sponsored by, or maintained by Microsoft, GitHub, Cursor, OpenAI, Anthropic, or other vendors of products named in this documentation. **Visual Studio**, **Visual Studio Code**, **GitHub**, **Cursor**, **Anthropic**, **Claude**, and other product names may be **trademarks** of their respective owners. For Microsoft’s naming and branding expectations around VS Code, see the official [Visual Studio Code brand guidelines](https://code.visualstudio.com/brand).
+**Independence and trademarks.** This monorepo is **independent** community tooling. It is **not** affiliated with, endorsed by, sponsored by, or maintained by Microsoft, GitHub, Cursor, OpenAI, Anthropic, or other vendors of products named in this documentation. The **Cloude Code ToolBox** name is an **independent project brand** and is **not** the Anthropic **Claude** product or service. **Visual Studio**, **Visual Studio Code**, **GitHub**, **Cursor**, **Anthropic**, **Claude**, and other product names may be **trademarks** of their respective owners. For Microsoft’s naming and branding expectations around VS Code, see the official [Visual Studio Code brand guidelines](https://code.visualstudio.com/brand). Third-party workflow inspiration is credited in [`packages/cloude-code-toolbox/NOTICE`](packages/cloude-code-toolbox/NOTICE).
 
 **Software warranty.** Code is released under the [MIT License](LICENSE). The license applies **“AS IS”**, without warranties of any kind, and limits liability—read the full license text shipped with the software.
 
