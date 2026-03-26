@@ -1,9 +1,48 @@
 /* Cloude Code ToolBox — GitHub Pages
-   “Claude Code” graphic theme: #000 base, terracotta #d08870, brown offset shadows, Press Start 2P headlines. */
+   Terracotta + Press Start 2P. Light (default) and dark themes via html[data-theme]. */
 
+/* ----- Light theme (default) ----- */
 :root {
+  --bg: #faf7f4;
+  --bg-elevated: rgba(208, 136, 112, 0.1);
+  --terracotta: #b85840;
+  --terracotta-dim: rgba(184, 88, 64, 0.18);
+  --terracotta-bright: #9d4a35;
+  --shadow-brown: #c9b8b0;
+  --shadow-brown-mid: #a89890;
+  --border: rgba(139, 90, 72, 0.28);
+  --border-strong: rgba(120, 72, 56, 0.45);
+  --text: #1c1410;
+  --muted: #5c534d;
+  --accent-bright: #c45c42;
+  --accent-dim: rgba(208, 136, 112, 0.14);
+  --accent-glow: 4px 4px 0 var(--shadow-brown);
+  --accent-glow-strong: 6px 6px 0 var(--shadow-brown-mid);
+  --code-warm: #a0503c;
+  --header-bg: rgba(255, 252, 250, 0.94);
+  --body-grad-spot: radial-gradient(ellipse 90% 55% at 50% -15%, rgba(208, 136, 112, 0.16), transparent 58%);
+  --body-grad-base: linear-gradient(180deg, #faf7f4 0%, #f2e8e2 55%, #faf7f4 100%);
+  --figure-bg: #ffffff;
+  --figcaption-bg: rgba(250, 247, 244, 0.97);
+  --strong-inline: #2d2420;
+  --hero-dropshadow: rgba(60, 40, 35, 0.12);
+  --plain-inset: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  --pixel-shadow: rgba(92, 64, 54, 0.22);
+  --logo-emboss: rgba(92, 64, 54, 0.2);
+  --cta-grad-1: linear-gradient(180deg, rgba(208, 136, 112, 0.12) 0%, transparent 55%);
+  --cta-grad-2: radial-gradient(ellipse 70% 90% at 50% 100%, rgba(208, 180, 168, 0.35), transparent 60%);
+  --cta-inset: inset 0 2px 0 rgba(208, 136, 112, 0.15);
+  --link-glow: rgba(184, 88, 64, 0.25);
+  --font-pixel: "Press Start 2P", ui-monospace, monospace;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --r: 2px;
+  --max: 1100px;
+}
+
+/* ----- Dark theme ----- */
+html[data-theme="dark"] {
   --bg: #000000;
-  --bg-mid: #060504;
   --bg-elevated: rgba(208, 136, 112, 0.06);
   --terracotta: #d08870;
   --terracotta-dim: rgba(208, 136, 112, 0.22);
@@ -14,17 +53,25 @@
   --border-strong: rgba(208, 136, 112, 0.65);
   --text: #ece8e4;
   --muted: #9a8f88;
-  --accent: var(--terracotta);
   --accent-bright: #f0c4b4;
   --accent-dim: rgba(208, 136, 112, 0.14);
   --accent-glow: 4px 4px 0 var(--shadow-brown);
   --accent-glow-strong: 6px 6px 0 var(--shadow-brown-mid);
   --code-warm: var(--terracotta-bright);
-  --font-pixel: "Press Start 2P", ui-monospace, monospace;
-  --font-body: "DM Sans", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --r: 2px;
-  --max: 1100px;
+  --header-bg: rgba(0, 0, 0, 0.92);
+  --body-grad-spot: radial-gradient(ellipse 90% 55% at 50% -15%, rgba(208, 136, 112, 0.09), transparent 58%);
+  --body-grad-base: linear-gradient(180deg, #000000 0%, #050302 55%, #000000 100%);
+  --figure-bg: #080605;
+  --figcaption-bg: rgba(0, 0, 0, 0.5);
+  --strong-inline: #f5ebe6;
+  --hero-dropshadow: rgba(0, 0, 0, 0.75);
+  --plain-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --pixel-shadow: #3d2820;
+  --logo-emboss: var(--shadow-brown);
+  --cta-grad-1: linear-gradient(180deg, rgba(208, 136, 112, 0.1) 0%, transparent 55%);
+  --cta-grad-2: radial-gradient(ellipse 70% 90% at 50% 100%, rgba(61, 40, 32, 0.35), transparent 60%);
+  --cta-inset: inset 0 2px 0 rgba(208, 136, 112, 0.12);
+  --link-glow: rgba(208, 136, 112, 0.45);
 }
 
 *,
@@ -44,9 +91,7 @@ body {
   line-height: 1.65;
   color: var(--text);
   background-color: var(--bg);
-  background-image:
-    radial-gradient(ellipse 90% 55% at 50% -15%, rgba(208, 136, 112, 0.09), transparent 58%),
-    linear-gradient(180deg, #000000 0%, #050302 55%, #000000 100%);
+  background-image: var(--body-grad-spot), var(--body-grad-base);
   background-repeat: no-repeat;
   background-size: auto, auto;
   min-height: 100vh;
@@ -60,7 +105,7 @@ a {
 a:hover {
   text-decoration: none;
   color: var(--accent-bright);
-  text-shadow: 0 0 18px rgba(208, 136, 112, 0.45);
+  text-shadow: 0 0 18px var(--link-glow);
 }
 
 .wrap {
@@ -75,7 +120,7 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.92);
+  background: var(--header-bg);
   backdrop-filter: blur(12px);
   box-shadow: 0 2px 0 var(--shadow-brown);
 }
@@ -86,6 +131,38 @@ a:hover {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.theme-switch {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.theme-switch .btn-theme {
+  padding: 0.48rem 0.72rem;
+  font-size: 0.48rem;
+  line-height: 1.35;
+  min-width: 4.5rem;
+}
+
+.btn-theme[aria-pressed="true"] {
+  background: var(--terracotta);
+  color: #1a0f0c;
+  border-color: var(--shadow-brown-mid);
+  box-shadow: var(--accent-glow);
+  opacity: 1;
+}
+
+.btn-theme[aria-pressed="false"] {
+  opacity: 0.72;
 }
 
 .logo {
@@ -100,7 +177,7 @@ a:hover {
 }
 .logo span {
   color: var(--terracotta);
-  text-shadow: 2px 2px 0 var(--shadow-brown);
+  text-shadow: 2px 2px 0 var(--logo-emboss);
 }
 
 .nav-cta {
@@ -109,7 +186,7 @@ a:hover {
   flex-wrap: wrap;
 }
 
-/* Blocky buttons — terracotta fill + brown drop shadow */
+/* Blocky buttons — terracotta fill + offset shadow */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -127,12 +204,14 @@ a:hover {
   color: var(--text);
   background: transparent;
   box-shadow: var(--accent-glow);
+  cursor: pointer;
   transition:
     transform 0.15s ease,
     border-color 0.15s ease,
     background 0.15s ease,
     box-shadow 0.15s ease,
-    color 0.15s ease;
+    color 0.15s ease,
+    opacity 0.15s ease;
 }
 .btn:hover {
   text-decoration: none;
@@ -189,7 +268,7 @@ a:hover {
   text-transform: uppercase;
   margin: 0 0 1rem;
   color: var(--text);
-  text-shadow: 3px 3px 0 var(--shadow-brown);
+  text-shadow: 3px 3px 0 var(--pixel-shadow);
 }
 
 .lead {
@@ -205,7 +284,7 @@ a:hover {
   border-radius: var(--r);
   padding: 1.35rem 1.5rem;
   border-left: 4px solid var(--terracotta);
-  box-shadow: var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: var(--accent-glow), var(--plain-inset);
   backdrop-filter: blur(8px);
 }
 .plain strong {
@@ -227,7 +306,7 @@ a:hover {
   border-radius: var(--r);
   overflow: hidden;
   border: 2px solid var(--border-strong);
-  box-shadow: var(--accent-glow-strong), 0 20px 60px rgba(0, 0, 0, 0.75);
+  box-shadow: var(--accent-glow-strong), 0 20px 60px var(--hero-dropshadow);
   opacity: 0;
   animation: rise 0.9s ease 0.15s forwards;
 }
@@ -268,7 +347,7 @@ a:hover {
   margin: 0 0 1.5rem;
   letter-spacing: 0.04em;
   color: var(--terracotta);
-  text-shadow: 2px 2px 0 var(--shadow-brown);
+  text-shadow: 2px 2px 0 var(--pixel-shadow);
 }
 
 .pillar-grid {
@@ -324,7 +403,7 @@ a:hover {
   margin: 0 0 0.35rem;
   letter-spacing: 0.04em;
   color: var(--terracotta);
-  text-shadow: 2px 2px 0 var(--shadow-brown);
+  text-shadow: 2px 2px 0 var(--pixel-shadow);
 }
 .modes .sub {
   color: var(--muted);
@@ -369,7 +448,7 @@ a:hover {
   margin-bottom: 0;
 }
 .mode-card strong {
-  color: #f5ebe6;
+  color: var(--strong-inline);
   font-weight: 600;
 }
 
@@ -387,7 +466,7 @@ a:hover {
   margin: 0 0 0.35rem;
   letter-spacing: 0.04em;
   color: var(--terracotta);
-  text-shadow: 2px 2px 0 var(--shadow-brown);
+  text-shadow: 2px 2px 0 var(--pixel-shadow);
 }
 .gallery .sub {
   color: var(--muted);
@@ -411,7 +490,7 @@ figure {
   border-radius: var(--r);
   overflow: hidden;
   border: 2px solid var(--border);
-  background: #080605;
+  background: var(--figure-bg);
   box-shadow: 3px 3px 0 var(--shadow-brown);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
@@ -430,7 +509,7 @@ figcaption {
   font-size: 0.78rem;
   color: var(--muted);
   border-top: 2px solid var(--border);
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--figcaption-bg);
 }
 
 /* CTA band */
@@ -438,10 +517,8 @@ figcaption {
   padding: 3rem 0;
   border-top: 2px solid var(--border);
   border-bottom: 2px solid var(--border);
-  background:
-    linear-gradient(180deg, rgba(208, 136, 112, 0.1) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 90% at 50% 100%, rgba(61, 40, 32, 0.35), transparent 60%);
-  box-shadow: inset 0 2px 0 rgba(208, 136, 112, 0.12);
+  background: var(--cta-grad-1), var(--cta-grad-2);
+  box-shadow: var(--cta-inset);
 }
 
 .cta-band .wrap {
@@ -457,7 +534,7 @@ figcaption {
   margin: 0 0 0.5rem;
   letter-spacing: 0.04em;
   color: var(--terracotta);
-  text-shadow: 2px 2px 0 var(--shadow-brown);
+  text-shadow: 2px 2px 0 var(--pixel-shadow);
 }
 .cta-band p {
   color: var(--muted);
@@ -500,7 +577,7 @@ figcaption {
 }
 .site-footer a:hover {
   color: var(--terracotta-bright);
-  text-shadow: 0 0 14px rgba(208, 136, 112, 0.35);
+  text-shadow: 0 0 14px var(--link-glow);
 }
 
 .site-footer .site-disclaimer {
@@ -590,9 +667,9 @@ body.lightbox-open {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--r);
-  border: 2px solid var(--shadow-brown);
-  background: var(--bg-elevated);
-  color: var(--text);
+  border: 2px solid #5a5a5a;
+  background: rgba(18, 18, 18, 0.95);
+  color: #f0f0f0;
   font-size: 1.35rem;
   line-height: 1;
   cursor: pointer;
@@ -601,13 +678,13 @@ body.lightbox-open {
   justify-content: center;
   font-family: var(--font-body);
   backdrop-filter: blur(8px);
-  box-shadow: 3px 3px 0 var(--shadow-brown);
+  box-shadow: 3px 3px 0 #2a2a2a;
   transition: border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
 }
 .lightbox-close:hover {
-  border-color: var(--terracotta);
-  color: var(--terracotta-bright);
-  box-shadow: 5px 5px 0 var(--shadow-brown-mid);
+  border-color: #d08870;
+  color: #fff;
+  box-shadow: 5px 5px 0 #3d2820;
 }
 
 .lightbox-frame img {

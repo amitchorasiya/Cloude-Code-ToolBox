@@ -6,6 +6,7 @@
 - **Docs / site:** Root README and **GitHub Pages** (`docs/index.html`) now spell out the Marketplace listing title, id, and short VS Code UI label; refreshed page `<title>`, meta description, and CTA copy; `site.css?v=22`.
 - **Docs / site:** **Cloude Code** visual theme for GitHub Pages — deep ink base, sky + violet accents (extension-inspired), ember monospace hints; `site.css?v=23`.
 - **Docs / site:** **Claude Code–style** marketing theme — `#000` base, terracotta `#d08870`, brown offset block shadows, **Press Start 2P** headlines, DM Sans body; `site.css?v=24`.
+- **Docs / site:** **Light (default)** and **Dark** themes on GitHub Pages — header **Light** / **Dark** buttons, `localStorage` key `cloude-docs-theme`, early script to avoid flash; `site.css?v=26`.
 
 ## 1.0.5
 

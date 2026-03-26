@@ -1,7 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
+    <script>
+      (function () {
+        try {
+          var k = "cloude-docs-theme";
+          var v = localStorage.getItem(k);
+          document.documentElement.setAttribute("data-theme", v === "dark" || v === "light" ? v : "light");
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude) — VS Code</title>
     <meta
@@ -14,13 +25,22 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/site.css?v=25" />
+    <link rel="stylesheet" href="css/site.css?v=26" />
   </head>
   <body>
     <header class="site-header">
       <div class="wrap">
         <a class="logo" href="#">Cloude <span>Code ToolBox</span></a>
-        <nav class="nav-cta" aria-label="Primary">
+        <div class="header-actions">
+          <div class="theme-switch" role="group" aria-label="Color theme">
+            <button type="button" class="btn btn-theme" id="theme-btn-light" data-theme-pick="light" aria-pressed="true">
+              Light
+            </button>
+            <button type="button" class="btn btn-theme" id="theme-btn-dark" data-theme-pick="dark" aria-pressed="false">
+              Dark
+            </button>
+          </div>
+          <nav class="nav-cta" aria-label="Primary">
           <a
             class="btn btn-primary"
             href="vscode:extension/amitchorasiya.cloude-code-toolbox-vscode"
@@ -28,7 +48,8 @@
             >Install in VS Code</a
           >
           <a class="btn btn-ghost" href="https://github.com/amitchorasiya/Cloude-Code-ToolBox">Source on GitHub</a>
-        </nav>
+          </nav>
+        </div>
       </div>
     </header>
 
@@ -341,6 +362,33 @@
     </footer>
     <script>
       (function () {
+        var THEME_KEY = "cloude-docs-theme";
+        var btnLight = document.getElementById("theme-btn-light");
+        var btnDark = document.getElementById("theme-btn-dark");
+        function syncThemeButtons() {
+          var t = document.documentElement.getAttribute("data-theme") || "light";
+          if (btnLight) btnLight.setAttribute("aria-pressed", t === "light" ? "true" : "false");
+          if (btnDark) btnDark.setAttribute("aria-pressed", t === "dark" ? "true" : "false");
+        }
+        function setTheme(mode) {
+          document.documentElement.setAttribute("data-theme", mode);
+          try {
+            localStorage.setItem(THEME_KEY, mode);
+          } catch (e) {}
+          syncThemeButtons();
+        }
+        if (btnLight) {
+          btnLight.addEventListener("click", function () {
+            setTheme("light");
+          });
+        }
+        if (btnDark) {
+          btnDark.addEventListener("click", function () {
+            setTheme("dark");
+          });
+        }
+        syncThemeButtons();
+
         var root = document.getElementById("lightbox-root");
         if (!root) return;
         var scrim = root.querySelector(".lightbox-scrim");
