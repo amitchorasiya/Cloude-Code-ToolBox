@@ -8,6 +8,12 @@
 
 Gradle-based [IntelliJ Platform](https://plugins.jetbrains.com/docs/intellij/welcome.html) plugin. **Preview:** JCEF **hub** (MCP, skills, Intelligence, workspace flows) with ongoing parity vs **[VS Code](../cloude-code-toolbox/)**; see plugin description and [ROADMAP.md](ROADMAP.md).
 
+**Screenshots** (same hub UI as VS Code; captures from VS Code — see [monorepo `screenshots/`](https://github.com/amitchorasiya/Cloude-Code-ToolBox/tree/main/screenshots)):
+
+![Activity Bar → Cloude Code ToolBox; Side Bar → MCP & skills hub](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/00-toolbox-access.png)
+
+![Intelligence tab: Cursor to VS Code + Claude Code bridges](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/01-intelligence.png)
+
 **Feature parity** with VS Code is a **large, multi-phase** effort (JCEF hub, Kotlin bridge, MCP/skills/CLI integrations). See **[ROADMAP.md](ROADMAP.md)** for the technical plan—not something that can be toggled on in one release.
 
 ## Requirements

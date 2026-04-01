@@ -4,8 +4,9 @@
  * then restores the extension README from a stash file.
  *
  * Same pattern as Github-Copilot-ToolBox: Marketplace README uses absolute raw GitHub URLs for
- * screenshots so images resolve from `main` (monorepo-safe). GitHub Pages `docs/index.html`
- * uses the same raw URLs.
+ * screenshots so images resolve from `main` (monorepo-safe). The monorepo root README keeps those
+ * absolute URLs so GitHub/npm always render images; this script appends `?v=` for the `.vsix`.
+ * GitHub Pages `docs/index.html` uses same-origin `docs/screenshots/` paths.
  *
  * Bridge CLIs are `file:../…` symlinks during dev; `vsce` runs `npm list --production`, which
  * fails for symlinked packages’ nested deps. We temporarily repoint `package.json` to `npm pack`

@@ -24,7 +24,7 @@ See also: [IntelliJ package README](packages/cloude-code-toolbox-intellij/README
 
 **Don’t see the icon?** Press **Ctrl+Shift+P** (Windows/Linux) or **⌘⇧P** (macOS), type **Cloude Code ToolBox**, run any listed command (that wakes the extension UI), or run **Developer: Reload Window**, then repeat steps 2–4.
 
-![Activity Bar → Cloude Code ToolBox; Side Bar → MCP & skills hub](screenshots/00-toolbox-access.png)
+![Activity Bar → Cloude Code ToolBox; Side Bar → MCP & skills hub](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/00-toolbox-access.png)
 
 ## One place for Claude Code-related setup
 
@@ -98,29 +98,29 @@ These are **actual VS Code UI captures** from the extension—what users see on 
 
 **Intelligence** (hub): **Port Cursor → VS Code + Claude Code** (MCP, rules, memory bank), then broader bridges, context pack, readiness, MCP & Skills scan.
 
-![Intelligence: Port Cursor MCP, rules, and memory bank to VS Code + Claude Code](screenshots/02-intelligence-cursor-port.png)
+![Intelligence: Port Cursor MCP, rules, and memory bank to VS Code + Claude Code](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/02-intelligence-cursor-port.png)
 
-![Intelligence tab: Cursor to VS Code + Claude Code bridges](screenshots/01-intelligence.png)
+![Intelligence tab: Cursor to VS Code + Claude Code bridges](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/01-intelligence.png)
 
-![Intelligence: context pack and readiness actions](screenshots/02-intelligence-context-readiness.png)
+![Intelligence: context pack and readiness actions](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/02-intelligence-context-readiness.png)
 
 **MCP**: installed workspace/user servers and registry browse.
 
-![MCP: installed workspace servers (Browse / Installed)](screenshots/03-mcp-browse-workspace-servers.png)
+![MCP: installed workspace servers (Browse / Installed)](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/03-mcp-browse-workspace-servers.png)
 
-![MCP: registry browse & search](screenshots/04-mcp-registry-search.png)
+![MCP: registry browse & search](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/04-mcp-registry-search.png)
 
 **Skills**: catalog (skills.sh) and local installed `SKILL.md` trees.
 
-![Skills: catalog (skills.sh)](screenshots/05-skills-catalog-skills-sh.png)
+![Skills: catalog (skills.sh)](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/05-skills-catalog-skills-sh.png)
 
-![Skills: installed local skill folders](screenshots/06-skills-installed-local.png)
+![Skills: installed local skill folders](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/06-skills-installed-local.png)
 
 **Workspace** checklist and **Intelligence** hub (context hygiene).
 
-![Workspace kit checklist](screenshots/07-workspace-checklist.png)
+![Workspace kit checklist](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/07-workspace-checklist.png)
 
-![Intelligence: context hygiene, snapshot, and quick actions](screenshots/08-workspace-toolbox-commands.png)
+![Intelligence: context hygiene, snapshot, and quick actions](https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/08-workspace-toolbox-commands.png)
 
 **Reference diagram:** there is no exported PNG in `screenshots/` right now. Regenerate from [`diagrams/mermaid-copilot-map.mmd`](diagrams/mermaid-copilot-map.mmd) with the Mermaid CLI (or any local exporter) and save as `screenshots/mermaid-claude-map.png` if you want this image back in the README.
 
@@ -395,7 +395,7 @@ npm run package          # stages monorepo README (+ screenshot URLs) for Market
 # npx vsce publish       # when you are logged in to the publisher (from this directory)
 ```
 
-The `.vsix` **README** is the **monorepo root** [`README.md`](README.md) (same content as on GitHub), with image paths rewritten to **`raw.githubusercontent.com/.../main/screenshots/…`** (plus a cache-busting `?v=` from the extension version) so the Marketplace and offline `.vsix` details view load screenshots from GitHub—same approach as [Github-Copilot-ToolBox](https://github.com/amitchorasiya/Github-Copilot-ToolBox). Other repo links in the staged README are turned into absolute GitHub URLs before packaging. [`packages/cloude-code-toolbox/README.md`](packages/cloude-code-toolbox/README.md) is restored after each package run. Do not use **`package:extension-readme-only`** for a real publish—that skips this flow and README images break.
+The `.vsix` **README** is the **monorepo root** [`README.md`](README.md) (same content as on GitHub). Screenshot images use absolute **`raw.githubusercontent.com/.../main/screenshots/…`** URLs so they render on GitHub, the Marketplace, and anywhere else the README is shown; **`npm run package`** appends a cache-busting **`?v=`** (from the extension version) to those image URLs for the packed `.vsix`. Other relative repo links in the staged README are turned into absolute GitHub URLs before packaging. [`packages/cloude-code-toolbox/README.md`](packages/cloude-code-toolbox/README.md) is restored after each package run. Do not use **`package:extension-readme-only`** for a real publish—that skips this flow and README images break.
 
 From monorepo root: `npm run package:extension` (after `npm install` in the package directory).
 
