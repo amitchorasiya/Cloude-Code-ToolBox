@@ -31,6 +31,22 @@ describe("migrateCursorSkillsToAgents", () => {
     expect(r2).toBe("skipped");
   });
 
+  it("merges missing files when destination skill folder already exists", async () => {
+    const tmp = await fs.mkdtemp(path.join(os.tmpdir(), "gct-mig3-"));
+    const cur = cursorSkillsDir(tmp);
+    const ag = agentsSkillsDir(tmp);
+    await fs.mkdir(path.join(cur, "dup"), { recursive: true });
+    await fs.writeFile(path.join(cur, "dup", "SKILL.md"), "# src\n", "utf8");
+    await fs.writeFile(path.join(cur, "dup", "extra.md"), "x\n", "utf8");
+    await fs.mkdir(path.join(ag, "dup"), { recursive: true });
+    await fs.writeFile(path.join(ag, "dup", "SKILL.md"), "# dest\n", "utf8");
+    const listed = await listSkillFoldersAtRoot(cur);
+    const r = await migrateOneSkillFolder(listed[0].abs, ag, listed[0].name, "copy");
+    expect(r).toBe("migrated");
+    expect(await fs.readFile(path.join(ag, "dup", "SKILL.md"), "utf8")).toContain("# dest");
+    expect(await fs.readFile(path.join(ag, "dup", "extra.md"), "utf8")).toBe("x\n");
+  });
+
   it("move removes source", async () => {
     const tmp = await fs.mkdtemp(path.join(os.tmpdir(), "gct-mig2-"));
     const cur = cursorSkillsDir(tmp);

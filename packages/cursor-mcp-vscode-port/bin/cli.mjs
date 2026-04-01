@@ -69,6 +69,7 @@ async function main() {
       out: { type: "string", short: "o" },
       target: { type: "string", short: "t" },
       merge: { type: "boolean", default: false },
+      /** @deprecated No-op: merge is always used when the output file exists. */
       force: { type: "boolean", default: false },
       "dry-run": { type: "boolean", default: false },
       "no-sanitize-names": { type: "boolean", default: false },
@@ -88,8 +89,8 @@ Options:
   -s, --source <path>   Cursor mcp.json (default: ~/.cursor/mcp.json)
   -t, --target <where>  workspace | user | insiders | stdout (default: workspace)
   -o, --out <path>      Output file path (overrides --target default path)
-      --merge           Merge servers into existing mcp.json instead of replacing
-      --force             Overwrite existing mcp.json without --merge
+      --merge           (Optional) Ignored for compatibility — existing mcp.json is always merged with converted servers.
+      --force           Deprecated no-op (merge-only behavior; never replaces the whole file)
       --dry-run           Print JSON to stdout only; do not write files
       --no-sanitize-names Keep original server keys (VS Code prefers camelCase)
       --no-fix-snyk       Do not rewrite IDE_CONFIG_PATH Cursor → VSCode for Snyk
@@ -135,7 +136,7 @@ Examples:
   }
 
   let finalDoc = converted;
-  if (values.merge && outputPath && (await fileExists(outputPath))) {
+  if (outputPath && (await fileExists(outputPath))) {
     const existing = await readJson(outputPath);
     finalDoc = mergeVsCodeMcp(existing, converted);
   }
@@ -157,12 +158,6 @@ Examples:
 
   if (!outputPath) {
     console.error("Internal error: no output path");
-    process.exit(1);
-  }
-
-  if (!values.force && !values.merge && (await fileExists(outputPath))) {
-    console.error(`Refusing to overwrite existing file: ${outputPath}`);
-    console.error("Use --force to replace, or --merge to combine servers.");
     process.exit(1);
   }
 

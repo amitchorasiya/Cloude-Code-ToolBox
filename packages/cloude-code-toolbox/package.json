@@ -2,7 +2,7 @@
   "name": "cloude-code-toolbox-vscode",
   "displayName": "Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)",
   "description": "Cloude Code ToolBox: MCP hub, workspace helpers, Thinking Machine Mode (context packs & priming), readiness, and bridges from Cursor to Claude Code in VS Code. Not affiliated with Microsoft, GitHub, or Anthropic. See README disclaimer. Workflow ideas credited in NOTICE (everything-claude-code, MIT).",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "publisher": "amitchorasiya",
   "author": "amitchorasiya",
   "license": "MIT",
@@ -41,7 +41,7 @@
           "cloude-code-toolbox.embeddedBridgeNodeExecutable": {
             "type": "string",
             "default": "",
-            "description": "Absolute path to the Node.js binary for hub \u201cWithout npx\u201d bundled CLIs. Leave empty to run the command `node` from the integrated terminal PATH (same expectation as npx). Do not point at VS Code itself \u2014 `node` must be a real Node install."
+            "description": "Absolute path to the Node.js binary for hub “Without npx” bundled CLIs. Leave empty to run the command `node` from the integrated terminal PATH (same expectation as npx). Do not point at VS Code itself — `node` must be a real Node install."
           },
           "cloude-code-toolbox.useInsidersPaths": {
             "type": "boolean",
@@ -51,22 +51,22 @@
           "cloude-code-toolbox.intelligence.includeGitByDefault": {
             "type": "boolean",
             "default": false,
-            "description": "Pre-select \u201cInclude git\u201d in the context pack quick pick (still confirm each run)."
+            "description": "Pre-select “Include git” in the context pack quick pick (still confirm each run)."
           },
           "cloude-code-toolbox.intelligence.includeDiagnosticsByDefault": {
             "type": "boolean",
             "default": false,
-            "description": "Pre-select \u201cInclude diagnostics\u201d in the context pack quick pick."
+            "description": "Pre-select “Include diagnostics” in the context pack quick pick."
           },
           "cloude-code-toolbox.intelligence.appendNotepadAfterPack": {
             "type": "boolean",
             "default": false,
-            "description": "Pre-select \u201cAppend to session notepad\u201d after building a context pack."
+            "description": "Pre-select “Append to session notepad” after building a context pack."
           },
           "cloude-code-toolbox.intelligence.openChatAfterPack": {
             "type": "boolean",
             "default": true,
-            "description": "Pre-select \u201cOpen Claude Code\u201d after building a context pack."
+            "description": "Pre-select “Open Claude Code” after building a context pack."
           },
           "cloude-code-toolbox.translateWrapMultilineInFence": {
             "type": "boolean",
@@ -76,23 +76,23 @@
         }
       },
       {
-        "title": "One Click Setup \u2014 Migration tracks",
+        "title": "One Click Setup — Migration tracks",
         "order": 98,
         "properties": {
           "cloude-code-toolbox.oneClickSetup.migrateFromCursor": {
             "type": "boolean",
             "default": true,
-            "description": "One Click runs the **Cursor \u2192 Claude Code** path: `.cursor/skills` migration (if enabled below), Cursor rules \u2192 `CLAUDE.md`, `.cursorrules` append, Cursor MCP \u2192 VS Code `mcp.json`, and memory-bank `--cursor-rules` when that setting is on."
+            "description": "One Click runs the **Cursor → Claude Code** path: `.cursor/skills` migration (if enabled below), Cursor rules → `CLAUDE.md`, `.cursorrules` append, Cursor MCP → VS Code `mcp.json`, and memory-bank `--cursor-rules` when that setting is on."
           },
           "cloude-code-toolbox.oneClickSetup.migrateFromGitHubCopilot": {
             "type": "boolean",
             "default": true,
-            "description": "One Click runs the **GitHub Copilot \u2192 Claude Code** path: optional merges below (e.g. `.github/copilot-instructions.md` \u2192 `CLAUDE.md`, Copilot skill folders \u2192 `.agents/skills`). VS Code `mcp.json` is shared with Copilot in the editor; use **MCP** hub + Claude `/mcp` for the Claude session."
+            "description": "One Click runs the **GitHub Copilot → Claude Code** path: optional merges below (e.g. `.github/copilot-instructions.md` → `CLAUDE.md`, Copilot skill folders → `.agents/skills`). VS Code `mcp.json` is shared with Copilot in the editor; use **MCP** hub + Claude `/mcp` for the Claude session."
           }
         }
       },
       {
-        "title": "One Click Setup \u2014 General",
+        "title": "One Click Setup — General",
         "order": 100,
         "properties": {
           "cloude-code-toolbox.oneClickSetup.settingsScope": {
@@ -104,14 +104,14 @@
             "default": "workspace",
             "description": "Where One Click writes settings it updates (e.g. enabling auto-scan). User = global; workspace = folder .vscode/settings.json.",
             "enumDescriptions": [
-              "Write to the open workspace folder\u2019s .vscode/settings.json when possible.",
+              "Write to the open workspace folder’s .vscode/settings.json when possible.",
               "Write to your User settings (applies to all folders)."
             ]
           }
         }
       },
       {
-        "title": "One Click Setup \u2014 Memory Bank",
+        "title": "One Click Setup — Memory Bank",
         "order": 110,
         "properties": {
           "cloude-code-toolbox.oneClickSetup.initMemoryBankMode": {
@@ -119,15 +119,13 @@
             "enum": [
               "apply",
               "dryRun",
-              "applyForce",
               "off"
             ],
             "default": "apply",
-            "description": "Memory bank init (cloude-code-memory-bank): one mode per run. **Default: apply** (init without --force; keeps existing SKILL templates unless you choose applyForce).",
+            "description": "Memory bank init (cloude-code-memory-bank): one mode per run. **Default: apply** — merges into CLAUDE.md and only adds missing memory-bank files (never overwrites existing templates).",
             "enumDescriptions": [
-              "Default \u2014 run init without --force (same as interactive \u201cNo\u201d when templates already exist).",
+              "Run init: merge-only (add missing files; merge memory-bank block in CLAUDE.md).",
               "Run with --dry-run only (preview).",
-              "Run init with --force (overwrite templates).",
               "Skip memory bank init."
             ]
           },
@@ -139,7 +137,7 @@
         }
       },
       {
-        "title": "One Click Setup \u2014 Rules",
+        "title": "One Click Setup — Rules",
         "order": 120,
         "properties": {
           "cloude-code-toolbox.oneClickSetup.syncCursorRulesMode": {
@@ -150,9 +148,9 @@
               "off"
             ],
             "default": "apply",
-            "description": "Cursor rules \u2192 Claude (cursor-rules-to-claude): one mode per run. **Default: apply**.",
+            "description": "Cursor rules → Claude (cursor-rules-to-claude): one mode per run. **Default: apply**.",
             "enumDescriptions": [
-              "Default \u2014 write .github/ outputs (when not dry).",
+              "Default — write .github/ outputs (when not dry).",
               "Run with --dry-run (preview only).",
               "Skip rules sync."
             ]
@@ -165,7 +163,7 @@
         }
       },
       {
-        "title": "One Click Setup \u2014 Skills",
+        "title": "One Click Setup — Skills",
         "order": 130,
         "properties": {
           "cloude-code-toolbox.oneClickSetup.migrateSkillsTarget": {
@@ -177,7 +175,7 @@
               "both"
             ],
             "default": "off",
-            "description": "Migrate .cursor/skills \u2192 .agents/skills: pick one target (single-select). Copy/move is set below.",
+            "description": "Migrate .cursor/skills → .agents/skills: pick one target (single-select). Copy/move is set below.",
             "enumDescriptions": [
               "Do not migrate skills during One Click.",
               "Migrate under the open workspace folder only.",
@@ -192,7 +190,7 @@
               "move"
             ],
             "default": "copy",
-            "description": "How to migrate when the target above is not \u201coff\u201d.",
+            "description": "How to migrate when the target above is not “off”.",
             "enumDescriptions": [
               "Copy; keep files under .cursor/skills.",
               "Copy then remove from .cursor/skills."
@@ -201,7 +199,7 @@
         }
       },
       {
-        "title": "One Click Setup \u2014 GitHub Copilot (optional)",
+        "title": "One Click Setup — GitHub Copilot (optional)",
         "order": 135,
         "properties": {
           "cloude-code-toolbox.oneClickSetup.mergeCopilotInstructionsIntoClaudeMd": {
@@ -218,7 +216,7 @@
               "both"
             ],
             "default": "workspace",
-            "description": "When the GitHub Copilot track is on: migrate `.github/skills` and/or `~/.copilot/skills` \u2192 `.agents/skills`. Copy/move is set below.",
+            "description": "When the GitHub Copilot track is on: migrate `.github/skills` and/or `~/.copilot/skills` → `.agents/skills`. Copy/move is set below.",
             "enumDescriptions": [
               "Do not migrate Copilot/GitHub skill folders during One Click.",
               "Migrate workspace `.github/skills` only.",
@@ -233,7 +231,7 @@
               "move"
             ],
             "default": "copy",
-            "description": "Copy vs move for Copilot/GitHub skills migration when the target above is not \u201coff\u201d.",
+            "description": "Copy vs move for Copilot/GitHub skills migration when the target above is not “off”.",
             "enumDescriptions": [
               "Copy; keep originals.",
               "Copy then remove from source."
@@ -247,7 +245,7 @@
         }
       },
       {
-        "title": "One Click Setup \u2014 MCP",
+        "title": "One Click Setup — MCP",
         "order": 140,
         "properties": {
           "cloude-code-toolbox.oneClickSetup.portCursorMcp": {
@@ -255,16 +253,14 @@
             "enum": [
               "user",
               "workspaceMerge",
-              "workspaceOverwrite",
               "dry",
               "skip"
             ],
             "default": "user",
-            "description": "Port Cursor MCP \u2192 VS Code mcp.json: pick one target (One Click and default for Settings). Single-select in Settings.",
+            "description": "Port Cursor MCP → VS Code mcp.json: pick one target (One Click and default for Settings). The port CLI always merges with an existing mcp.json (never replaces the whole file).",
             "enumDescriptions": [
-              "Write user mcp.json (all workspaces).",
+              "Merge into user mcp.json (all workspaces).",
               "Merge into workspace .vscode/mcp.json.",
-              "Overwrite workspace .vscode/mcp.json.",
               "Print JSON only (dry).",
               "Skip MCP port."
             ]
@@ -272,7 +268,7 @@
         }
       },
       {
-        "title": "One Click Setup \u2014 Follow-ups",
+        "title": "One Click Setup — Follow-ups",
         "order": 150,
         "properties": {
           "cloude-code-toolbox.oneClickSetup.instructionMergeAfterOneClick": {
@@ -365,7 +361,7 @@
         }
       },
       {
-        "title": "One Click Setup \u2014 Legacy (migration only)",
+        "title": "One Click Setup — Legacy (migration only)",
         "order": 190,
         "properties": {
           "cloude-code-toolbox.oneClickSetup.initMemoryBank": {
@@ -430,13 +426,13 @@
         }
       },
       {
-        "title": "MCP & Skills \u2014 background sync",
+        "title": "MCP & Skills — background sync",
         "order": 999,
         "properties": {
           "cloude-code-toolbox.intelligence.autoScanMcpSkillsOnWorkspaceOpen": {
             "type": "boolean",
             "default": true,
-            "description": "When checked: after a workspace opens (debounced), save MCP & Skills awareness to `.claude/cloude-code-toolbox-mcp-skills-awareness.md` (overwritten), refresh hub, and update the MCP/skills block in `CLAUDE.md` \u2014 no editor tab. Re-runs on reopen so new MCP/skills are reflected. **Scan now** on the hub does the same immediately. In Claude Code, use `/mcp` for live tools; VS Code `mcp.json` is separate."
+            "description": "When checked: after a workspace opens (debounced), save MCP & Skills awareness to `.claude/cloude-code-toolbox-mcp-skills-awareness.md` (overwritten), refresh hub, and update the MCP/skills block in `CLAUDE.md` — no editor tab. Re-runs on reopen so new MCP/skills are reflected. **Scan now** on the hub does the same immediately. In Claude Code, use `/mcp` for live tools; VS Code `mcp.json` is separate."
           }
         }
       }
@@ -496,31 +492,31 @@
       },
       {
         "command": "CloudeCodeToolBox.mcpListServers",
-        "title": "Cloude Code ToolBox: MCP \u2014 List servers (native)"
+        "title": "Cloude Code ToolBox: MCP — List servers (native)"
       },
       {
         "command": "CloudeCodeToolBox.mcpBrowseRegistry",
-        "title": "Cloude Code ToolBox: MCP \u2014 Browse registry (@mcp)"
+        "title": "Cloude Code ToolBox: MCP — Browse registry (@mcp)"
       },
       {
         "command": "CloudeCodeToolBox.mcpAddServer",
-        "title": "Cloude Code ToolBox: MCP \u2014 Add server (native)"
+        "title": "Cloude Code ToolBox: MCP — Add server (native)"
       },
       {
         "command": "CloudeCodeToolBox.portCursorMcp",
-        "title": "Cloude Code ToolBox: Port Cursor MCP \u2192 VS Code (npx)"
+        "title": "Cloude Code ToolBox: Port Cursor MCP → VS Code (npx)"
       },
       {
         "command": "CloudeCodeToolBox.manualPortCursorMcpWithoutNpx",
-        "title": "Cloude Code ToolBox: Port Cursor MCP \u2192 VS Code (bundled CLI \u2014 no npx)"
+        "title": "Cloude Code ToolBox: Port Cursor MCP → VS Code (bundled CLI — no npx)"
       },
       {
         "command": "CloudeCodeToolBox.syncCursorRules",
-        "title": "Cloude Code ToolBox: Sync Cursor rules \u2192 CLAUDE.md (npx)"
+        "title": "Cloude Code ToolBox: Sync Cursor rules → CLAUDE.md (npx)"
       },
       {
         "command": "CloudeCodeToolBox.cursorRulesToClaudeWithoutNpx",
-        "title": "Cloude Code ToolBox: Cursor rules \u2192 CLAUDE.md (bundled CLI \u2014 no npx)"
+        "title": "Cloude Code ToolBox: Cursor rules → CLAUDE.md (bundled CLI — no npx)"
       },
       {
         "command": "CloudeCodeToolBox.initMemoryBank",
@@ -528,11 +524,11 @@
       },
       {
         "command": "CloudeCodeToolBox.memoryBankWithoutNpx",
-        "title": "Cloude Code ToolBox: Init memory bank (bundled CLI \u2014 no npx)"
+        "title": "Cloude Code ToolBox: Init memory bank (bundled CLI — no npx)"
       },
       {
         "command": "CloudeCodeToolBox.workspaceSetupWizard",
-        "title": "Cloude Code ToolBox: Cursor \u2192 Claude Code setup (legacy \u2014 opens One Click)"
+        "title": "Cloude Code ToolBox: Cursor → Claude Code setup (legacy — opens One Click)"
       },
       {
         "command": "CloudeCodeToolBox.openClaudeCode",
@@ -554,7 +550,7 @@
       },
       {
         "command": "CloudeCodeToolBox.openInstructionsPicker",
-        "title": "Cloude Code ToolBox: Open instruction file\u2026"
+        "title": "Cloude Code ToolBox: Open instruction file…"
       },
       {
         "command": "CloudeCodeToolBox.appendCursorrules",
@@ -614,71 +610,71 @@
       },
       {
         "command": "CloudeCodeToolBox.buildContextPack",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 build context pack (copy)"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — build context pack (copy)"
       },
       {
         "command": "CloudeCodeToolBox.runThinkingMachinePriming",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 prime session (awareness, context pack)"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — prime session (awareness, context pack)"
       },
       {
         "command": "CloudeCodeToolBox.showMcpSkillsAwareness",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 scan MCP & Skills awareness (save to .claude)"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — scan MCP & Skills awareness (save to .claude)"
       },
       {
         "command": "CloudeCodeToolBox.showIntelligenceReadiness",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 show readiness summary"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — show readiness summary"
       },
       {
         "command": "CloudeCodeToolBox.openIntelligenceSettings",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 open related settings"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — open related settings"
       },
       {
         "command": "CloudeCodeToolBox.openThinkingMachineModeSettings",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 open Thinking Machine settings"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — open Thinking Machine settings"
       },
       {
         "command": "CloudeCodeToolBox.openIntelligenceToolboxRepos",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 open Toolbox CLI repo on GitHub\u2026"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — open Toolbox CLI repo on GitHub…"
       },
       {
         "command": "CloudeCodeToolBox.migrateSkillsCursorToAgents",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 migrate skills .cursor \u2192 .agents"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — migrate skills .cursor → .agents"
       },
       {
         "command": "CloudeCodeToolBox.revealSkillFoldersWithoutNpx",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 reveal .cursor/.agents skill folders"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — reveal .cursor/.agents skill folders"
       },
       {
         "command": "CloudeCodeToolBox.claudeToolboxConfigScan",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 scan Claude Code / MCP config (Output)"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — scan Claude Code / MCP config (Output)"
       },
       {
         "command": "CloudeCodeToolBox.appendNotepadToMemoryBank",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 append session notepad to memory-bank file"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — append session notepad to memory-bank file"
       },
       {
         "command": "CloudeCodeToolBox.createSkillStub",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 create SKILL.md stub under .github/skills"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — create SKILL.md stub under .github/skills"
       },
       {
         "command": "CloudeCodeToolBox.verificationChecklist",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 verification checklist"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — verification checklist"
       },
       {
         "command": "CloudeCodeToolBox.applyBundledMcpRecipe",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 apply bundled MCP recipe to workspace"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — apply bundled MCP recipe to workspace"
       },
       {
         "command": "CloudeCodeToolBox.runFirstWorkspaceTestTask",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 run first test-like workspace task"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — run first test-like workspace task"
       },
       {
         "command": "CloudeCodeToolBox.runOneClickSetup",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 One Click Setup (configured steps)"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — One Click Setup (configured steps)"
       },
       {
         "command": "CloudeCodeToolBox.openOneClickSetupSettings",
-        "title": "Cloude Code ToolBox: Thinking Machine Mode \u2014 open One Click Setup settings"
+        "title": "Cloude Code ToolBox: Thinking Machine Mode — open One Click Setup settings"
       }
     ],
     "menus": {
@@ -704,6 +700,7 @@
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
+    "export:hub-for-intellij": "node scripts/export-hub-for-intellij.mjs",
     "watch": "tsc -watch -p ./",
     "package": "node scripts/package-extension.mjs",
     "package:extension-readme-only": "vsce package",

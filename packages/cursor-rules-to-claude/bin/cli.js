@@ -55,6 +55,7 @@ async function main() {
   }
 
   try {
+    opts.root = path.resolve(opts.root);
     const result = await convert(opts);
     console.log(result.message);
     if (result.dryRun) {

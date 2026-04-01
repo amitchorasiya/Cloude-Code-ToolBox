@@ -28,16 +28,14 @@ async function migrateForTarget(
   if (gv("initMemoryBankMode") === undefined) {
     const init = gv("initMemoryBank");
     const dry = gv("initMemoryBankDryRun");
-    const force = gv("initMemoryBankForce");
-    if (init !== undefined || dry !== undefined || force !== undefined) {
+    const legacyForce = gv("initMemoryBankForce");
+    if (init !== undefined || dry !== undefined || legacyForce !== undefined) {
       const effectiveInit = init !== false;
       let mode: string;
       if (!effectiveInit) {
         mode = "off";
       } else if (dry === true) {
         mode = "dryRun";
-      } else if (force === true) {
-        mode = "applyForce";
       } else {
         mode = "apply";
       }
@@ -90,5 +88,15 @@ async function migrateForTarget(
       await cfg.update(`${P}.turnOnAutoScanAfter`, undefined, target);
       await cfg.update(`${P}.mergeInstructionsWithoutAutoScan`, undefined, target);
     }
+  }
+
+  /** Legacy enum values removed in favor of merge-only behavior. */
+  const port = gv("portCursorMcp");
+  if (port === "workspaceOverwrite") {
+    await cfg.update(`${P}.portCursorMcp`, "workspaceMerge", target);
+  }
+  const imb = gv("initMemoryBankMode");
+  if (imb === "applyForce") {
+    await cfg.update(`${P}.initMemoryBankMode`, "apply", target);
   }
 }

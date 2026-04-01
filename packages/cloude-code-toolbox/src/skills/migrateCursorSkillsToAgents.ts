@@ -1,3 +1,4 @@
+import type { Dirent } from "node:fs";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
@@ -55,8 +56,81 @@ export type MigrateSkillMode = "copy" | "move";
 export type MigrateOneResult = "migrated" | "skipped" | "error";
 
 /**
+ * Copy files from `srcDir` into `destDir` only where the destination path is missing (add-only merge).
+ * @returns relative paths (posix) of files that were created under dest.
+ */
+async function mergeSkillFolderAddOnly(
+  srcDir: string,
+  destDir: string
+): Promise<{ added: number; copiedRelPaths: string[] }> {
+  let added = 0;
+  const copiedRelPaths: string[] = [];
+  await fs.mkdir(destDir, { recursive: true });
+  const entries = await fs.readdir(srcDir, { withFileTypes: true });
+  for (const e of entries) {
+    const sp = path.join(srcDir, e.name);
+    const dp = path.join(destDir, e.name);
+    if (e.isDirectory()) {
+      const sub = await mergeSkillFolderAddOnly(sp, dp);
+      added += sub.added;
+      for (const r of sub.copiedRelPaths) {
+        copiedRelPaths.push(path.join(e.name, r).split(path.sep).join("/"));
+      }
+    } else {
+      try {
+        await fs.access(dp);
+      } catch {
+        await fs.mkdir(path.dirname(dp), { recursive: true });
+        await fs.copyFile(sp, dp);
+        added++;
+        copiedRelPaths.push(e.name);
+      }
+    }
+  }
+  return { added, copiedRelPaths };
+}
+
+async function unlinkRelPathsUnder(root: string, relPaths: string[]): Promise<void> {
+  for (const rel of relPaths) {
+    const p = path.join(root, ...rel.split("/"));
+    try {
+      await fs.unlink(p);
+    } catch {
+      /* */
+    }
+  }
+}
+
+/** Best-effort remove empty directories under `root` (bottom-up). */
+async function pruneEmptyDirsUnder(root: string): Promise<void> {
+  async function walk(dir: string): Promise<void> {
+    let entries: Dirent[];
+    try {
+      entries = await fs.readdir(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const e of entries) {
+      if (e.isDirectory()) {
+        await walk(path.join(dir, e.name));
+      }
+    }
+    try {
+      const left = await fs.readdir(dir);
+      if (left.length === 0 && dir !== root) {
+        await fs.rmdir(dir);
+      }
+    } catch {
+      /* */
+    }
+  }
+  await walk(root);
+}
+
+/**
  * Copy or move one skill folder into `.agents/skills/<name>`.
- * Skips if destination folder already exists.
+ * If the destination already exists, **add-only** merge: copy missing files; never overwrite.
+ * Move mode removes from source only files that were merged (copied) into dest.
  */
 export async function migrateOneSkillFolder(
   srcFolderAbs: string,
@@ -65,17 +139,35 @@ export async function migrateOneSkillFolder(
   mode: MigrateSkillMode
 ): Promise<MigrateOneResult> {
   const dest = path.join(agentsSkillsParent, name);
+  let destExists = false;
   try {
     await fs.access(dest);
-    return "skipped";
+    destExists = true;
   } catch {
-    /* ok — dest does not exist */
+    /* dest missing */
   }
+
+  if (!destExists) {
+    try {
+      await fs.mkdir(agentsSkillsParent, { recursive: true });
+      await fs.cp(srcFolderAbs, dest, { recursive: true });
+      if (mode === "move") {
+        await fs.rm(srcFolderAbs, { recursive: true, force: true });
+      }
+      return "migrated";
+    } catch {
+      return "error";
+    }
+  }
+
   try {
-    await fs.mkdir(agentsSkillsParent, { recursive: true });
-    await fs.cp(srcFolderAbs, dest, { recursive: true });
+    const { added, copiedRelPaths } = await mergeSkillFolderAddOnly(srcFolderAbs, dest);
+    if (added === 0) {
+      return "skipped";
+    }
     if (mode === "move") {
-      await fs.rm(srcFolderAbs, { recursive: true, force: true });
+      await unlinkRelPathsUnder(srcFolderAbs, copiedRelPaths);
+      await pruneEmptyDirsUnder(srcFolderAbs);
     }
     return "migrated";
   } catch {

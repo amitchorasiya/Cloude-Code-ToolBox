@@ -37,13 +37,13 @@ function getPortMode(): PortCursorMcpMode | "skip" {
   if (v === "skip" || v === "dry") {
     return v === "dry" ? "dry" : "skip";
   }
-  if (v === "workspaceOverwrite") {
-    return "force";
+  if (v === "workspaceOverwrite" || v === "workspaceMerge") {
+    return "workspace";
   }
   if (v === "user") {
     return "user";
   }
-  return "merge";
+  return "workspace";
 }
 
 export async function openOneClickSetupSettings(): Promise<void> {
@@ -95,10 +95,10 @@ export async function runOneClickSetup(
     ? "move"
     : "copy") as MigrateSkillMode;
 
-  const initMemoryBankMode = ws.get<string>(`${CFG}.oneClickSetup.initMemoryBankMode`, "apply");
+  const rawInitMb = ws.get<string>(`${CFG}.oneClickSetup.initMemoryBankMode`, "apply");
+  const initMemoryBankMode = rawInitMb === "applyForce" ? "apply" : rawInitMb;
   const initMb = initMemoryBankMode !== "off";
   const initMbDry = initMemoryBankMode === "dryRun";
-  const initMbForce = initMemoryBankMode === "applyForce";
   const initMbCursor =
     migrateFromCursor && ws.get<boolean>(`${CFG}.oneClickSetup.initMemoryBankCursorRules`, true);
 
@@ -219,7 +219,6 @@ export async function runOneClickSetup(
         {
           dryRun: initMbDry,
           cursorRules: initMbCursor,
-          force: initMbForce,
         },
         qm
       );

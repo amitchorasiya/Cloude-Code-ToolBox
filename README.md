@@ -1,10 +1,21 @@
 # Cloude Code ToolBox
 
-**VS Code extension + monorepo:** [`Cloude-Code-ToolBox`](https://github.com/amitchorasiya/Cloude-Code-ToolBox) on GitHub · **License:** [MIT](LICENSE) · **Marketplace id:** `amitchorasiya.cloude-code-toolbox-vscode` · **Listing title:** *Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)* · **Version:** `1.0.6`
+**VS Code extension + monorepo:** [`Cloude-Code-ToolBox`](https://github.com/amitchorasiya/Cloude-Code-ToolBox) on GitHub · **License:** [MIT](LICENSE) · **VS Code Marketplace id:** `amitchorasiya.cloude-code-toolbox-vscode` · **Listing title:** *Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)* · **Versions:** VS Code extension **`1.0.9`** · JetBrains plugin **`0.6.10`** (plugin id `com.amitchorasiya.cloude.code.toolbox`)
 
-## After install: open Cloude Code ToolBox
+**Install:** [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=amitchorasiya.cloude-code-toolbox-vscode) · [`vscode:` deep link](vscode:extension/amitchorasiya.cloude-code-toolbox-vscode) · JetBrains: [Search Marketplace](https://plugins.jetbrains.com/search?search=Cloude+Code+ToolBox) · [`jetbrains://` install (opens IDE)](jetbrains://Plugins?action=install&pluginId=com.amitchorasiya.cloude.code.toolbox) · [IntelliJ sources & build](packages/cloude-code-toolbox-intellij/)
 
-**There is no separate application**—the extension runs **inside Visual Studio Code** only.
+## IDE support
+
+| IDE | Status | Install |
+|-----|--------|---------|
+| **Visual Studio Code** | **Shipping** — full MCP & skills hub | [Marketplace](https://marketplace.visualstudio.com/items?itemName=amitchorasiya.cloude-code-toolbox-vscode) · id **`amitchorasiya.cloude-code-toolbox-vscode`** |
+| **JetBrains (IntelliJ IDEA, PyCharm, …)** | **Preview** — JCEF hub + parity work in [`packages/cloude-code-toolbox-intellij/`](packages/cloude-code-toolbox-intellij/); build with `./gradlew buildPlugin` (JDK 21) or install from Marketplace / ZIP | [Marketplace search](https://plugins.jetbrains.com/search?search=Cloude+Code+ToolBox) · [`jetbrains://`…](jetbrains://Plugins?action=install&pluginId=com.amitchorasiya.cloude.code.toolbox) |
+
+See also: [IntelliJ package README](packages/cloude-code-toolbox-intellij/README.md).
+
+## After install: open Cloude Code ToolBox (VS Code)
+
+**There is no separate desktop app for the VS Code experience**—that extension runs **inside Visual Studio Code**. The JetBrains build is a separate plugin install (preview); see the table above.
 
 1. **Install** from the Marketplace (search for the listing title **Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)**) or from a `.vsix`. If VS Code prompts you, **reload the window** (**Developer: Reload Window**).
 2. Find the **Activity Bar**: the **narrow column of icons on the far left** of the VS Code window (Explorer, Search, Source Control, …).
@@ -17,7 +28,7 @@
 
 ## One place for Claude Code-related setup
 
-**In plain terms:** Claude Code only works as well as the setup around it—but that setup is usually scattered across files, machines, and habits. **Cloude Code ToolBox** is **one dedicated toolbox in VS Code**: you can **see** what’s configured, **standardize** how teams adopt Claude Code (including from **Cursor** and optional **GitHub Copilot → Claude Code** migration), and **give Claude Code better context** while each developer still **chooses** what to share.
+**In plain terms:** Claude Code only works as well as the setup around it—but that setup is usually scattered across files, machines, and habits. **Cloude Code ToolBox** is **one dedicated toolbox in VS Code** (and a **preview [JetBrains plugin](packages/cloude-code-toolbox-intellij/README.md)** with ongoing hub parity): you can **see** what’s configured, **standardize** how teams adopt Claude Code (including from **Cursor** and optional **GitHub Copilot → Claude Code** migration), and **give Claude Code better context** while each developer still **chooses** what to share.
 
 **For engineering teams, that means:**
 
@@ -48,7 +59,8 @@ These are the two **highlighted cards** at the top of the hub’s **Intelligence
 
 ## Table of contents
 
-- [After install: open Cloude Code ToolBox](#after-install-open-cloude-code-toolbox)
+- [IDE support](#ide-support)
+- [After install: open Cloude Code ToolBox (VS Code)](#after-install-open-cloude-code-toolbox-vs-code)
 - [One place for Claude Code-related setup](#one-place-for-claude-code-related-setup)
 - [One Click Setup and Thinking Machine Mode](#one-click-setup-and-thinking-machine-mode)
 - [What’s in this repo](#whats-in-this-repo)
@@ -74,6 +86,7 @@ These are the two **highlighted cards** at the top of the hub’s **Intelligence
 | Deliverable | Purpose |
 |-------------|---------|
 | **[Cloude Code ToolBox](packages/cloude-code-toolbox/)** | VS Code extension: **MCP & skills** hub, **workspace kit**, **Intelligence** (context packs, readiness, MCP/Skills awareness under `.claude/`, optional **`CLAUDE.md`** merge, auto-scan on folder open, `.cursor`→`.agents` skill migration), **bundled bridge CLIs** and optional **`npx`** from the hub |
+| **[cloude-code-toolbox-intellij](packages/cloude-code-toolbox-intellij/)** | **Preview** JetBrains Platform plugin (Tool Window placeholder); full hub features remain VS Code–first for now |
 | **[memory-bank/](memory-bank/)** | Optional project memory files for you and Claude Code (not required to build the extension) |
 | **[packages/cursor-mcp-vscode-port/](packages/cursor-mcp-vscode-port/)** | Placeholder README for the MCP port CLI layout; the CLI is published separately on npm |
 
@@ -81,7 +94,7 @@ The extension does **not** replace Claude Code or Cursor; it helps you **align c
 
 ### See the real UI (screenshots)
 
-These are **actual VS Code UI captures** from the extension—what users see on screen. **How to open the hub** (Activity Bar → Cloude Code ToolBox → **MCP & skills**) is at the top: [After install: open Cloude Code ToolBox](#after-install-open-cloude-code-toolbox). Most hub shots below are **high-resolution** (~2.5k width) so labels stay readable in README and on the [static site sources in `/docs`](https://github.com/amitchorasiya/Cloude-Code-ToolBox/tree/main/docs) (GitHub Pages from that folder; gallery images load from **`raw.githubusercontent.com`** on `main`, same pattern as [Github-Copilot-ToolBox](https://github.com/amitchorasiya/Github-Copilot-ToolBox)). See [Pages setup](docs/PAGES-SETUP.md) for the public URL and optional custom domain.
+These are **actual VS Code UI captures** from the extension—what users see on screen. **How to open the hub** (Activity Bar → Cloude Code ToolBox → **MCP & skills**) is at the top: [After install: open Cloude Code ToolBox (VS Code)](#after-install-open-cloude-code-toolbox-vs-code). Most hub shots below are **high-resolution** (~2.5k width) so labels stay readable in README and on the [static site sources in `/docs`](https://github.com/amitchorasiya/Cloude-Code-ToolBox/tree/main/docs) (GitHub Pages from that folder; gallery images load from **`raw.githubusercontent.com`** on `main`, same pattern as [Github-Copilot-ToolBox](https://github.com/amitchorasiya/Github-Copilot-ToolBox)). See [Pages setup](docs/PAGES-SETUP.md) for the public URL and optional custom domain.
 
 **Intelligence** (hub): **Port Cursor → VS Code + Claude Code** (MCP, rules, memory bank), then broader bridges, context pack, readiness, MCP & Skills scan.
 
@@ -115,7 +128,7 @@ These are **actual VS Code UI captures** from the extension—what users see on 
 
 ## MCP & skills hub: every tab, toggle, and button
 
-Open the **MCP & skills** hub from the **Side Bar** after you click **Cloude Code ToolBox** in the **Activity Bar** (see [After install: open Cloude Code ToolBox](#after-install-open-cloude-code-toolbox) at the top of this README). The hub is organized into **tabs**, a **Browse / Installed** switch (where applicable), a **search** field, optional **MCP chips**, and a **footer** legend.
+Open the **MCP & skills** hub from the **Side Bar** after you click **Cloude Code ToolBox** in the **Activity Bar** (see [After install: open Cloude Code ToolBox (VS Code)](#after-install-open-cloude-code-toolbox-vs-code) at the top of this README). The hub is organized into **tabs**, a **Browse / Installed** switch (where applicable), a **search** field, optional **MCP chips**, and a **footer** legend.
 
 ### Main tabs (top)
 
@@ -327,13 +340,16 @@ These work alongside the extension; the **Intelligence** hub links to their repo
 .
 ├── LICENSE                          # MIT (applies to repo contents; see package LICENSEs)
 ├── README.md                        # This file
-├── package.json                     # Private monorepo helper scripts (compile / test / package:extension)
+├── package.json                     # Private monorepo helper scripts (compile / test / package:extension / rebuild:extensions)
+├── scripts/
+│   └── rebuild-extensions.sh        # One-shot: VSIX + IntelliJ ZIP (see npm run rebuild:extensions)
 ├── packages/
 │   ├── cloude-code-toolbox/         # VS Code extension — publish VSIX / Marketplace from HERE
 │   │   ├── LICENSE                  # MIT (bundled in .vsix)
 │   │   ├── package.json
 │   │   ├── src/
 │   │   └── README.md
+│   ├── cloude-code-toolbox-intellij/  # JetBrains plugin (preview) — Gradle; ./gradlew buildPlugin → ZIP under build/distributions/
 │   ├── cursor-mcp-vscode-port/      # Vendored MCP port CLI (`npx` name: cursor-mcp-vscode-port)
 │   ├── cursor-mcp-to-github-copilot-port/  # Legacy folder name only; use cursor-mcp-vscode-port
 │   ├── cloude-code-memory-bank/     # Vendored memory-bank + `CLAUDE.md` merge CLI
@@ -353,15 +369,16 @@ These work alongside the extension; the **Intelligence** hub links to their repo
 3. `npm test` — Vitest (unit tests for Intelligence helpers, skills, etc.)
 4. F5 — extension host
 
+**Rebuild both artifacts (`.vsix` + IntelliJ `.zip`):** from the monorepo root, `npm run rebuild:extensions` (runs [scripts/rebuild-extensions.sh](scripts/rebuild-extensions.sh): compile, tests, export hub HTML for IntelliJ, `npm run package`, `npm run package:intellij`). Set `REBUILD_SKIP_TESTS=1` for a faster run without Vitest.
+
 **Tech stack (extension):** TypeScript, VS Code API `^1.99`, Vitest. See [packages/cloude-code-toolbox/README.md](packages/cloude-code-toolbox/README.md) for settings, keybindings, and caveats (`#file:` vs Add context, etc.).
 
 ---
 
 ## CI
 
-Workflow: [`.github/workflows/extension-ci.yml`](.github/workflows/extension-ci.yml)
-
-- Triggers on changes under `packages/cloude-code-toolbox/**`, root `package.json`, or the workflow file.
+- **VS Code extension:** [`.github/workflows/extension-ci.yml`](.github/workflows/extension-ci.yml) — triggers on `packages/cloude-code-toolbox/**`, root `package.json`, or that workflow file.
+- **IntelliJ plugin (preview):** [`.github/workflows/intellij-ci.yml`](.github/workflows/intellij-ci.yml) — triggers on `packages/cloude-code-toolbox-intellij/**` or that workflow file; runs `./gradlew buildPlugin` on Ubuntu with JDK 21.
 - **Matrix:** Ubuntu, Windows, macOS — `npm install`, `npm run compile`, `npm test`, verifies `out/extension.js` exists.
 
 ---

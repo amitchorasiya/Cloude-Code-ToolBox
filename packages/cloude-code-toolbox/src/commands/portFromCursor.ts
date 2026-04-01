@@ -2,7 +2,8 @@ import * as vscode from "vscode";
 import * as mcpPaths from "../mcpPaths";
 import { runNpxInTerminal } from "../terminal/runNpx";
 
-export type PortCursorMcpMode = "dry" | "force" | "merge" | "user";
+/** Cursor MCP port targets. The CLI always merges with an existing mcp.json when present (never replaces the whole file). */
+export type PortCursorMcpMode = "dry" | "user" | "workspace";
 
 /** Run Cursor MCP port without quick picks (One Click Setup, scripts). */
 export function runPortCursorMcpWithMode(
@@ -16,12 +17,9 @@ export function runPortCursorMcpWithMode(
   if (mode === "dry") {
     args.push("--dry-run");
   } else if (mode === "user") {
-    args.push("-t", insiders ? "insiders" : "user", "--force");
-  } else if (mode === "merge") {
-    args.push("--merge", "--force");
-  } else {
-    args.push("--force");
+    args.push("-t", insiders ? "insiders" : "user");
   }
+  // workspace: default CLI target is .vscode/mcp.json under cwd — no extra flags
   runNpxInTerminal(
     folder.uri.fsPath,
     "cursor-mcp-vscode-port",
@@ -42,9 +40,8 @@ export async function portCursorMcp(): Promise<void> {
 
   const mode = await vscode.window.showQuickPick(
     [
-      { label: "User mcp.json (all workspaces)", value: "user" as const },
-      { label: "Merge into existing .vscode/mcp.json", value: "merge" as const },
-      { label: "Write .vscode/mcp.json (overwrite)", value: "force" as const },
+      { label: "User mcp.json (merge with existing)", value: "user" as const },
+      { label: "Workspace .vscode/mcp.json (merge with existing)", value: "workspace" as const },
       { label: "Dry run (print JSON only)", value: "dry" as const },
     ],
     { title: "Port Cursor MCP → VS Code" }

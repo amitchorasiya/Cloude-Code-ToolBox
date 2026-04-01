@@ -14,10 +14,10 @@
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude) — VS Code</title>
+    <title>Cloude Code ToolBox — VS Code (full) · JetBrains (preview)</title>
     <meta
       name="description"
-      content="Cloude Code ToolBox for VS Code: MCP &amp; skills hub, One Click Setup, Thinking Machine Mode, and bridges from Cursor / GitHub Copilot to Claude Code. Marketplace: amitchorasiya.cloude-code-toolbox-vscode."
+      content="Cloude Code ToolBox: VS Code extension (Marketplace: amitchorasiya.cloude-code-toolbox-vscode) and JetBrains plugin (id com.amitchorasiya.cloude.code.toolbox). MCP &amp; skills hub; preview parity on IntelliJ."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,7 +25,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/site.css?v=26" />
+    <link rel="stylesheet" href="css/site.css?v=31" />
   </head>
   <body>
     <header class="site-header">
@@ -47,6 +47,18 @@
             title="Opens Visual Studio Code to this extension if it is installed"
             >Install in VS Code</a
           >
+          <a
+            class="btn btn-primary btn-secondary-ide"
+            href="jetbrains://Plugins?action=install&pluginId=com.amitchorasiya.cloude.code.toolbox"
+            title="Opens a JetBrains IDE to install Cloude Code ToolBox if one is installed"
+            >Install in JetBrains</a
+          >
+          <a
+            class="btn btn-ghost"
+            href="https://github.com/amitchorasiya/Cloude-Code-ToolBox/tree/main/packages/cloude-code-toolbox-intellij"
+            title="IntelliJ plugin sources, Gradle build, and Marketplace notes"
+            >JetBrains readme</a
+          >
           <a class="btn btn-ghost" href="https://github.com/amitchorasiya/Cloude-Code-ToolBox">Source on GitHub</a>
           </nav>
         </div>
@@ -60,13 +72,20 @@
             <h1>One place for Claude Code-related setup.</h1>
             <p class="lead">
               Stop losing time to scattered rules, MCP config, and “skills” folders. Give your team a single, honest view
-              inside VS Code.
+              inside <strong>VS Code</strong> today. An early <strong>JetBrains</strong> plugin (preview) lives in the same
+              <a href="https://github.com/amitchorasiya/Cloude-Code-ToolBox">repository</a>—not feature parity yet.
             </p>
             <div class="plain">
               <strong>After you install:</strong> In VS Code, use the <strong>Activity Bar</strong> (icons on the
               <strong>far left</strong>) → click <strong>Cloude Code ToolBox</strong> → in the <strong>Side Bar</strong> click
               <strong>MCP &amp; skills</strong>. That opens the hub (Intelligence, MCP, Skills, Workspace). Reload the window
               if you don’t see the icon yet.
+            </div>
+            <div class="plain">
+              <strong>JetBrains (IntelliJ IDEA, PyCharm, …):</strong> install <strong>Cloude Code ToolBox</strong> from the
+              <a href="https://plugins.jetbrains.com/search?search=Cloude+Code+ToolBox">JetBrains Marketplace</a>,
+              <a href="jetbrains://Plugins?action=install&pluginId=com.amitchorasiya.cloude.code.toolbox">open in your IDE</a>, or read the
+              <a href="https://github.com/amitchorasiya/Cloude-Code-ToolBox/blob/main/packages/cloude-code-toolbox-intellij/README.md">IntelliJ plugin readme</a> (preview; hub parity is ongoing).
             </div>
             <div class="plain">
               <strong>In plain terms:</strong> Claude Code in VS Code only works as well as the setup around it—but that setup is
@@ -81,7 +100,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="Where to open Cloude Code ToolBox — Activity Bar → Cloude Code ToolBox, then Side Bar → MCP &amp; skills"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/00-toolbox-access.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/00-toolbox-access.png?v=1.0.9"
                 alt="VS Code: Activity Bar Cloude Code ToolBox icon and Side Bar MCP &amp; skills. Click to view fullscreen."
                 width="3024"
                 height="1732"
@@ -93,7 +112,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="Intelligence tab — Cursor → VS Code &amp; Claude Code bridges (inside the hub)"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/01-intelligence.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/01-intelligence.png?v=1.0.9"
                 alt="Cloude Code ToolBox hub: Intelligence tab with Cursor to VS Code and Claude Code bridges. Click to view fullscreen."
                 width="2476"
                 height="1594"
@@ -178,7 +197,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="Open the hub — Activity Bar: Cloude Code ToolBox → Side Bar: MCP &amp; skills"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/00-toolbox-access.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/00-toolbox-access.png?v=1.0.9"
                 alt="How to open Cloude Code ToolBox after install: Activity Bar and MCP &amp; skills. Click to view fullscreen."
                 width="3024"
                 height="1732"
@@ -191,7 +210,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="Port Cursor — MCP, rules, memory bank to VS Code &amp; Claude Code"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/02-intelligence-cursor-port.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/02-intelligence-cursor-port.png?v=1.0.9"
                 alt="Intelligence: Port Cursor MCP, rules, and memory bank to VS Code and Claude Code. Click to view fullscreen."
                 width="2482"
                 height="1600"
@@ -204,7 +223,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="Cursor → VS Code &amp; Claude Code bridges"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/01-intelligence.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/01-intelligence.png?v=1.0.9"
                 alt="Intelligence: Cursor to VS Code and Claude Code bridges. Click to view fullscreen."
                 width="2476"
                 height="1594"
@@ -217,7 +236,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="Context &amp; readiness"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/02-intelligence-context-readiness.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/02-intelligence-context-readiness.png?v=1.0.9"
                 alt="Context and readiness actions. Click to view fullscreen."
                 width="2484"
                 height="1592"
@@ -230,7 +249,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="MCP — installed servers"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/03-mcp-browse-workspace-servers.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/03-mcp-browse-workspace-servers.png?v=1.0.9"
                 alt="MCP installed servers. Click to view fullscreen."
                 width="2468"
                 height="1596"
@@ -243,7 +262,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="MCP — registry browse"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/04-mcp-registry-search.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/04-mcp-registry-search.png?v=1.0.9"
                 alt="MCP registry browse. Click to view fullscreen."
                 width="2470"
                 height="1596"
@@ -256,7 +275,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="Skills — skills.sh catalog"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/05-skills-catalog-skills-sh.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/05-skills-catalog-skills-sh.png?v=1.0.9"
                 alt="Skills catalog. Click to view fullscreen."
                 width="2466"
                 height="1596"
@@ -269,7 +288,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="Skills — installed"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/06-skills-installed-local.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/06-skills-installed-local.png?v=1.0.9"
                 alt="Installed local skills. Click to view fullscreen."
                 width="2490"
                 height="1590"
@@ -282,7 +301,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="Workspace checklist"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/07-workspace-checklist.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/07-workspace-checklist.png?v=1.0.9"
                 alt="Workspace checklist. Click to view fullscreen."
                 width="2490"
                 height="1594"
@@ -295,7 +314,7 @@
                 class="zoomable"
                 tabindex="0"
                 data-caption="Intelligence — context hygiene"
-                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/08-workspace-toolbox-commands.png?v=1.0.6"
+                src="https://raw.githubusercontent.com/amitchorasiya/Cloude-Code-ToolBox/main/screenshots/08-workspace-toolbox-commands.png?v=1.0.9"
                 alt="Context hygiene and quick actions. Click to view fullscreen."
                 width="2490"
                 height="1608"
@@ -309,9 +328,9 @@
 
       <section class="cta-band" aria-labelledby="cta-heading">
         <div class="wrap">
-          <h2 id="cta-heading">Ready in the Marketplace</h2>
+          <h2 id="cta-heading">Ready in the Marketplaces</h2>
           <p>
-            In the Marketplace, search for <strong>Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)</strong> or use the buttons below. After install, open
+            <strong>VS Code:</strong> search for <strong>Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)</strong> or use the button below. After install, open
             <strong>Cloude Code ToolBox</strong> in the activity bar, then <strong>MCP &amp; skills</strong>.
           </p>
           <a
@@ -322,10 +341,22 @@
           >
           <p class="cta-fallback">
             VS Code did not open?
-            <a href="https://marketplace.visualstudio.com/items?itemName=amitchorasiya.cloude-code-toolbox-vscode">Open the Marketplace in your browser</a>
+            <a href="https://marketplace.visualstudio.com/items?itemName=amitchorasiya.cloude-code-toolbox-vscode">Open the VS Code Marketplace in your browser</a>
             instead.
           </p>
           <p class="mono-hint">code --install-extension amitchorasiya.cloude-code-toolbox-vscode</p>
+          <p>
+            <strong>JetBrains (IntelliJ IDEA, PyCharm, …):</strong> install <strong>Cloude Code ToolBox</strong> from the
+            <a href="https://plugins.jetbrains.com/search?search=Cloude+Code+ToolBox">JetBrains Marketplace</a> or use
+            <a href="jetbrains://Plugins?action=install&pluginId=com.amitchorasiya.cloude.code.toolbox">jetbrains://…</a> to open your IDE’s plugin dialog (plugin id
+            <code>com.amitchorasiya.cloude.code.toolbox</code>). Preview builds: <a href="https://github.com/amitchorasiya/Cloude-Code-ToolBox/tree/main/packages/cloude-code-toolbox-intellij">sources &amp; Gradle</a>.
+          </p>
+          <a
+            class="btn btn-primary btn-secondary-ide"
+            href="jetbrains://Plugins?action=install&pluginId=com.amitchorasiya.cloude.code.toolbox"
+            title="Opens a JetBrains IDE to install the plugin if installed"
+            >Install in JetBrains IDE</a
+          >
         </div>
       </section>
     </main>

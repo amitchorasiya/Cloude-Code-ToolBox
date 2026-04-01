@@ -41,9 +41,8 @@ export async function manualPortCursorMcpWithoutNpx(): Promise<void> {
 
   const mode = await vscode.window.showQuickPick(
     [
-      { label: "User mcp.json (all workspaces)", value: "user" as const },
-      { label: "Merge into existing .vscode/mcp.json", value: "merge" as const },
-      { label: "Write .vscode/mcp.json (overwrite)", value: "force" as const },
+      { label: "User mcp.json (merge with existing)", value: "user" as const },
+      { label: "Workspace .vscode/mcp.json (merge with existing)", value: "workspace" as const },
       { label: "Dry run (print JSON only)", value: "dry" as const },
     ],
     { title: "Port Cursor MCP → VS Code (bundled CLI)" }
@@ -60,11 +59,7 @@ export async function manualPortCursorMcpWithoutNpx(): Promise<void> {
   if (m === "dry") {
     args.push("--dry-run");
   } else if (m === "user") {
-    args.push("-t", insiders ? "insiders" : "user", "--force");
-  } else if (m === "merge") {
-    args.push("--merge", "--force");
-  } else {
-    args.push("--force");
+    args.push("-t", insiders ? "insiders" : "user");
   }
 
   runNodeCliInTerminal(folder.uri.fsPath, cli, args, "Cursor MCP port (bundled)");
@@ -119,26 +114,12 @@ export async function memoryBankWithoutNpx(): Promise<void> {
     return;
   }
 
-  const forcePick = await vscode.window.showQuickPick(
-    [
-      { label: "No", description: "Skip if templates already exist", alwaysShow: true, value: false as const },
-      { label: "Yes", description: "Overwrite memory-bank templates (--force)", alwaysShow: true, value: true as const },
-    ],
-    { title: "Overwrite existing memory-bank templates?", placeHolder: "Pick one" }
-  );
-  if (forcePick === undefined) {
-    return;
-  }
-
   const flags: string[] = ["init", "--cwd", folder.uri.fsPath];
   if (dryPick.value) {
     flags.push("--dry-run");
   }
   if (cursorRulesPick.value) {
     flags.push("--cursor-rules");
-  }
-  if (forcePick.value) {
-    flags.push("--force");
   }
 
   runNodeCliInTerminal(folder.uri.fsPath, cli, flags, "Memory bank (bundled)");
@@ -339,9 +320,6 @@ export function runInitMemoryBankBundledWithOptions(
   if (opts.cursorRules) {
     flags.push("--cursor-rules");
   }
-  if (opts.force) {
-    flags.push("--force");
-  }
   runNodeCliInTerminal(folder.uri.fsPath, cli, flags, "Memory bank (bundled)");
   return true;
 }
@@ -388,11 +366,7 @@ export function runPortCursorMcpBundledWithMode(
   if (mode === "dry") {
     args.push("--dry-run");
   } else if (mode === "user") {
-    args.push("-t", insiders ? "insiders" : "user", "--force");
-  } else if (mode === "merge") {
-    args.push("--merge", "--force");
-  } else {
-    args.push("--force");
+    args.push("-t", insiders ? "insiders" : "user");
   }
   runNodeCliInTerminal(folder.uri.fsPath, cli, args, "Cursor MCP port (bundled)");
   return true;

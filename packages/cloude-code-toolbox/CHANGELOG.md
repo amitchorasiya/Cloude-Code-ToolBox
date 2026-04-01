@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.9
+
+- **Docs:** Root README, extension README, IntelliJ README, and GitHub Pages (`docs/index.html`) now link both the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=amitchorasiya.cloude-code-toolbox-vscode) and JetBrains plugin install (`jetbrains://Plugins?action=install&pluginId=com.amitchorasiya.cloude.code.toolbox` plus Marketplace search fallback).
+- Patch release: version **1.0.9** (VS Code) / **0.6.10** (IntelliJ plugin).
+
+## 1.0.8
+
+- **Merge-only defaults:** MCP port, memory bank init, Cursor rules → `CLAUDE.md`, and skills migration no longer replace existing config or whole files without merging; One Click / Settings enums updated accordingly.
+- Patch release: version **1.0.8** (VS Code) / **0.6.9** (IntelliJ preview plugin).
+
+## 1.0.7
+
+- Patch release: version bump and docs/cache-bust alignment.
+
 ## 1.0.6
 
 - **Marketplace:** **`displayName`** set to **Cloude Code ToolBox (MCP, Skills, Cursor/Copilot → Claude)**.

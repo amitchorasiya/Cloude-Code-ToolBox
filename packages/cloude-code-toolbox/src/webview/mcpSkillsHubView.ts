@@ -57,6 +57,8 @@ export type HubPayload = {
   hygiene: HubHygiene;
   /** Set when `gatherHubPayload` failed; UI still loads with `emptyHubPayload()` defaults. */
   hubLoadError?: string;
+  /** Shared hub HTML: JetBrains hides duplicate npx vs bundled bridge buttons. */
+  hubHost?: "vscode" | "intellij";
 };
 
 export async function gatherHubPayload(context: vscode.ExtensionContext): Promise<HubPayload> {
@@ -134,6 +136,7 @@ export async function gatherHubPayload(context: vscode.ExtensionContext): Promis
     autoScanMcpSkillsOnWorkspaceOpen,
     thinkingMachineModeEnabled,
     hygiene,
+    hubHost: "vscode",
   };
 }
 
@@ -154,6 +157,7 @@ export function emptyHubPayload(): HubPayload {
       claudeMdLines: null,
       claudeMdMissing: true,
     },
+    hubHost: "vscode",
   };
 }
 

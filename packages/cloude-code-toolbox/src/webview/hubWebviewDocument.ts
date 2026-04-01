@@ -25,42 +25,113 @@ export function getHubWebviewHtml(csp: string): string {
       display: flex;
       flex-direction: column;
       font-family: var(--vscode-font-family);
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--vscode-foreground);
       background: var(--vscode-sideBar-background);
       padding: var(--pad);
       padding-bottom: 0;
+      width: 100%;
+      /* Full width of tool window / webview — do not max-width center (looks pillarboxed on wide panels). */
       /* Sidebar webviews sometimes give the iframe no explicit height; 100% collapses and flex:1 scroll area goes to 0px. */
       min-height: 100vh;
       box-sizing: border-box;
     }
-    .hub-header { flex-shrink: 0; margin-bottom: 4px; }
+    .hub-header { flex-shrink: 0; margin-bottom: 6px; }
+    .hub-tabs-hint {
+      margin: 0 0 8px;
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--muted);
+      font-weight: 500;
+    }
     .pages {
       display: flex;
-      gap: 2px;
-      padding: 3px;
+      gap: 4px;
+      padding: 4px;
       border-radius: var(--r-lg);
-      background: color-mix(in srgb, var(--vscode-input-background) 85%, transparent);
+      background: color-mix(in srgb, var(--vscode-sideBar-background) 88%, var(--vscode-widget-border));
       border: 1px solid var(--border);
-      margin-bottom: 4px;
+      box-shadow: inset 0 1px 2px color-mix(in srgb, var(--vscode-widget-shadow) 22%, transparent);
+      margin-bottom: 6px;
     }
     .page-btn {
       flex: 1;
-      border: none;
+      min-width: 0;
+      border: 1px solid color-mix(in srgb, var(--vscode-widget-border) 75%, var(--vscode-sideBar-background));
       border-radius: var(--r-sm);
-      padding: 7px 6px;
+      padding: 8px 6px;
       font-size: 11px;
-      font-weight: 500;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       cursor: pointer;
-      background: transparent;
+      background: color-mix(in srgb, var(--vscode-editor-background) 50%, var(--vscode-sideBar-background));
       color: var(--vscode-foreground);
-      opacity: 0.82;
+      box-shadow: 0 1px 0 color-mix(in srgb, var(--vscode-widget-shadow) 18%, transparent);
+      transition: background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease, color 0.12s ease;
     }
-    .page-btn:hover { opacity: 1; background: color-mix(in srgb, var(--vscode-toolbar-hoverBackground) 60%, transparent); }
+    .page-btn:hover {
+      background: color-mix(in srgb, var(--vscode-toolbar-hoverBackground) 65%, var(--vscode-sideBar-background));
+      border-color: color-mix(in srgb, var(--vscode-focusBorder) 40%, var(--border));
+    }
+    .page-btn:focus-visible {
+      outline: 2px solid var(--vscode-focusBorder);
+      outline-offset: 1px;
+      z-index: 1;
+    }
+    /* Per-tab tint (inactive + hover); emojis in label — aria-label = plain name for screen readers */
+    .page-btn[data-page="intel"]:not(.active) {
+      border-color: color-mix(in srgb, var(--vscode-charts-blue, #3b82f6) 50%, var(--border));
+      background: color-mix(in srgb, var(--vscode-charts-blue, #3b82f6) 16%, var(--vscode-sideBar-background));
+    }
+    .page-btn[data-page="intel"]:hover:not(.active) {
+      background: color-mix(in srgb, var(--vscode-charts-blue, #3b82f6) 28%, var(--vscode-sideBar-background));
+      border-color: color-mix(in srgb, var(--vscode-charts-blue, #3b82f6) 62%, var(--border));
+    }
+    .page-btn[data-page="mcp"]:not(.active) {
+      border-color: color-mix(in srgb, var(--vscode-charts-purple, #a855f7) 48%, var(--border));
+      background: color-mix(in srgb, var(--vscode-charts-purple, #a855f7) 14%, var(--vscode-sideBar-background));
+    }
+    .page-btn[data-page="mcp"]:hover:not(.active) {
+      background: color-mix(in srgb, var(--vscode-charts-purple, #a855f7) 26%, var(--vscode-sideBar-background));
+      border-color: color-mix(in srgb, var(--vscode-charts-purple, #a855f7) 58%, var(--border));
+    }
+    .page-btn[data-page="skills"]:not(.active) {
+      border-color: color-mix(in srgb, var(--vscode-charts-green, #22c55e) 48%, var(--border));
+      background: color-mix(in srgb, var(--vscode-charts-green, #22c55e) 14%, var(--vscode-sideBar-background));
+    }
+    .page-btn[data-page="skills"]:hover:not(.active) {
+      background: color-mix(in srgb, var(--vscode-charts-green, #22c55e) 26%, var(--vscode-sideBar-background));
+      border-color: color-mix(in srgb, var(--vscode-charts-green, #22c55e) 58%, var(--border));
+    }
+    .page-btn[data-page="workspace"]:not(.active) {
+      border-color: color-mix(in srgb, var(--vscode-charts-yellow, #eab308) 45%, var(--border));
+      background: color-mix(in srgb, var(--vscode-charts-yellow, #eab308) 14%, var(--vscode-sideBar-background));
+    }
+    .page-btn[data-page="workspace"]:hover:not(.active) {
+      background: color-mix(in srgb, var(--vscode-charts-yellow, #eab308) 26%, var(--vscode-sideBar-background));
+      border-color: color-mix(in srgb, var(--vscode-charts-yellow, #eab308) 55%, var(--border));
+    }
     .page-btn.active {
-      opacity: 1;
-      background: var(--vscode-button-background);
       color: var(--vscode-button-foreground);
+      box-shadow:
+        0 1px 2px color-mix(in srgb, var(--vscode-widget-shadow) 35%, transparent),
+        inset 0 1px 0 color-mix(in srgb, var(--vscode-button-foreground) 12%, transparent);
+    }
+    .page-btn[data-page="intel"].active {
+      background: color-mix(in srgb, var(--vscode-charts-blue, #3b82f6) 72%, var(--vscode-button-background));
+      border-color: color-mix(in srgb, var(--vscode-charts-blue, #3b82f6) 55%, var(--border));
+    }
+    .page-btn[data-page="mcp"].active {
+      background: color-mix(in srgb, var(--vscode-charts-purple, #a855f7) 68%, var(--vscode-button-background));
+      border-color: color-mix(in srgb, var(--vscode-charts-purple, #a855f7) 52%, var(--border));
+    }
+    .page-btn[data-page="skills"].active {
+      background: color-mix(in srgb, var(--vscode-charts-green, #22c55e) 65%, var(--vscode-button-background));
+      border-color: color-mix(in srgb, var(--vscode-charts-green, #22c55e) 50%, var(--border));
+    }
+    .page-btn[data-page="workspace"].active {
+      background: color-mix(in srgb, var(--vscode-charts-yellow, #eab308) 58%, var(--vscode-button-background));
+      border-color: color-mix(in srgb, var(--vscode-charts-yellow, #eab308) 48%, var(--border));
     }
     .subpages {
       display: flex;
@@ -68,13 +139,20 @@ export function getHubWebviewHtml(csp: string): string {
       margin-bottom: 8px;
     }
     .sub-btn {
-      padding: 5px 12px;
+      padding: 6px 14px;
+      min-height: 28px;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: var(--card);
       color: inherit;
       font-size: 11px;
+      font-weight: 600;
       cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    }
+    .sub-btn:hover {
+      border-color: color-mix(in srgb, var(--vscode-focusBorder) 50%, var(--border));
+      background: var(--card-hover);
     }
     .sub-btn.active {
       border-color: var(--accent);
@@ -93,13 +171,16 @@ export function getHubWebviewHtml(csp: string): string {
     .search::placeholder { color: var(--muted); }
     .chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
     .chip {
-      padding: 5px 10px;
+      padding: 6px 11px;
+      min-height: 28px;
       border-radius: var(--r-sm);
       border: 1px solid var(--border);
       background: var(--card);
       font-size: 10px;
+      font-weight: 600;
       cursor: pointer;
       color: inherit;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
     }
     .chip:hover { border-color: var(--vscode-focusBorder); background: var(--card-hover); }
     #scroll {
@@ -109,12 +190,12 @@ export function getHubWebviewHtml(csp: string): string {
       padding-bottom: 12px;
     }
     .section-title {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       color: var(--muted);
-      margin: 14px 0 8px;
+      margin: 16px 0 10px;
     }
     .section-title:first-child { margin-top: 4px; }
     .callout {
@@ -158,30 +239,43 @@ export function getHubWebviewHtml(csp: string): string {
     .desc { font-size: 11px; line-height: 1.4; margin-top: 8px; opacity: 0.95; }
     .row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
     .btn {
-      padding: 5px 11px;
+      padding: 6px 12px;
+      min-height: 28px;
       font-size: 11px;
+      font-weight: 600;
       border-radius: var(--r-sm);
       border: 1px solid var(--border);
       background: var(--vscode-toolbar-hoverBackground);
       color: var(--vscode-foreground);
       cursor: pointer;
       font-family: inherit;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+    .btn:hover {
+      border-color: color-mix(in srgb, var(--vscode-focusBorder) 45%, var(--border));
+      filter: brightness(0.98);
     }
     .btn.primary {
       background: var(--vscode-button-background);
       color: var(--vscode-button-foreground);
-      border-color: transparent;
+      border-color: color-mix(in srgb, var(--vscode-button-background) 72%, #000000);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
+    }
+    .btn.primary:hover {
+      filter: brightness(1.06);
+      border-color: color-mix(in srgb, var(--vscode-button-background) 55%, #000000);
     }
     .hero {
       border-radius: var(--r-lg);
       border: 1px solid var(--border);
       padding: 14px 14px 12px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       background: var(--card);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
     }
     .hero .ic { font-size: 22px; margin-bottom: 6px; }
-    .hero h3 { margin: 0 0 4px; font-size: 13px; }
-    .hero p { margin: 0 0 12px; font-size: 11px; color: var(--muted); line-height: 1.4; }
+    .hero h3 { margin: 0 0 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.01em; }
+    .hero p { margin: 0 0 12px; font-size: 11.5px; color: var(--muted); line-height: 1.5; }
     details.tool-block {
       border: 1px solid var(--border);
       border-radius: var(--r-lg);
@@ -404,7 +498,7 @@ export function getHubWebviewHtml(csp: string): string {
       color: var(--vscode-foreground);
     }
     .tmm-cb {
-      margin-top: 6px;
+      margin-top: 2px;
       flex-shrink: 0;
       width: 15px;
       height: 15px;
@@ -529,11 +623,12 @@ export function getHubWebviewHtml(csp: string): string {
 </head>
 <body>
   <div class="hub-header">
+    <p class="hub-tabs-hint" id="hub-tabs-hint">Click a tab to switch sections — each has different tools.</p>
     <nav class="pages" id="pages" aria-label="Hub sections">
-      <button type="button" class="page-btn active" data-page="intel">Intelligence</button>
-      <button type="button" class="page-btn" data-page="mcp">MCP</button>
-      <button type="button" class="page-btn" data-page="skills">Skills</button>
-      <button type="button" class="page-btn" data-page="workspace">Workspace</button>
+      <button type="button" class="page-btn active" data-page="intel" aria-label="Intelligence" title="Bridges, One Click, Thinking Machine, readiness, scans">🧠 Intelligence</button>
+      <button type="button" class="page-btn" data-page="mcp" aria-label="MCP" title="Registry search and MCP servers (workspace + user)">🔌 MCP</button>
+      <button type="button" class="page-btn" data-page="skills" aria-label="Skills" title="skills.sh catalog and local SKILL.md folders">📚 Skills</button>
+      <button type="button" class="page-btn" data-page="workspace" aria-label="Workspace" title="Workspace checklist and all toolbox commands">📋 Workspace</button>
     </nav>
     <nav class="subpages" id="subpages" aria-label="Browse or installed">
       <button type="button" class="sub-btn active" data-sub="browse">Browse</button>
@@ -548,7 +643,7 @@ export function getHubWebviewHtml(csp: string): string {
         <div class="ocs-cb-slot" aria-hidden="true"></div>
         <div class="ocs-content">
           <button type="button" class="btn primary ocs-pill-btn" id="one-click-setup-run">One Click Setup</button>
-          <p class="ocs-desc">Runs your configured steps using <strong>bundled Node CLIs</strong> (no npx). <strong>Migration tracks</strong> default to both <strong>Cursor → Claude Code</strong> and <strong>GitHub Copilot → Claude Code</strong> (toggle under <strong>Settings → One Click Setup → Migration tracks</strong>). Then memory bank, merges, MCP port (Cursor track), scans, and follow-ups. You confirm responsibility before anything runs.</p>
+          <p class="ocs-desc" id="ocs-desc">Opens the <strong>One Click Setup</strong> wizard: migration tracks (Cursor / Copilot), bridge CLIs, merges, and follow-ups. Copy updates when hub state loads (VS Code vs JetBrains).</p>
         </div>
         <button type="button" class="btn icon-gear ocs-gear" id="one-click-setup-settings" title="One Click Setup defaults" aria-label="One Click Setup settings">⚙</button>
       </div>
@@ -730,6 +825,69 @@ export function getHubWebviewHtml(csp: string): string {
     var tcb = $("#thinking-machine-mode-cb");
     if (!tcb || !state) return;
     tcb.checked = state.thinkingMachineModeEnabled === true;
+  }
+
+  /** Build description with strong/code/em via DOM APIs (avoids innerHTML sinks for static analyzers). */
+  function setOcsRichDescription(el, segments) {
+    el.textContent = "";
+    for (var i = 0; i < segments.length; i++) {
+      var s = segments[i];
+      if (typeof s === "string") {
+        el.appendChild(document.createTextNode(s));
+      } else if (s.tag === "strong") {
+        var st = document.createElement("strong");
+        st.textContent = s.text;
+        el.appendChild(st);
+      } else if (s.tag === "code") {
+        var cd = document.createElement("code");
+        cd.textContent = s.text;
+        el.appendChild(cd);
+      } else if (s.tag === "em") {
+        var em = document.createElement("em");
+        em.textContent = s.text;
+        el.appendChild(em);
+      }
+    }
+  }
+
+  /** VS Code vs JetBrains: one-click blurb + top hint (shared HTML). */
+  function syncHubHostCopy() {
+    var hint = document.getElementById("hub-tabs-hint");
+    var ocs = document.getElementById("ocs-desc");
+    if (!state) {
+      return;
+    }
+    if (hint) {
+      if (state.hubHost === "intellij") {
+        hint.textContent =
+          "JetBrains — same hub as VS Code; Cursor/Copilot bridges use CLIs bundled in the plugin (node), not public npx.";
+      } else {
+        hint.textContent = "Click a tab to switch sections — each has different tools.";
+      }
+    }
+    if (ocs) {
+      if (state.hubHost === "intellij") {
+        setOcsRichDescription(ocs, [
+          "Opens the ",
+          { tag: "strong", text: "One Click Setup" },
+          " wizard. Bridge steps run the CLIs ",
+          { tag: "strong", text: "packaged in this plugin" },
+          " via ",
+          { tag: "code", text: "node" },
+          " (optional absolute Node path in Settings). Tracks: Cursor and/or Copilot → Claude Code, memory bank, merges, MCP port, scans. You confirm before anything runs.",
+        ]);
+      } else {
+        setOcsRichDescription(ocs, [
+          "Opens the ",
+          { tag: "strong", text: "One Click Setup" },
+          " wizard. Bridge steps use ",
+          { tag: "code", text: "npx" },
+          " to the registry ",
+          { tag: "em", text: "or" },
+          " the CLIs bundled with the extension — your choice from the cards below. Tracks: Cursor and/or Copilot → Claude Code, memory bank, merges, scans. You confirm before anything runs.",
+        ]);
+      }
+    }
   }
 
   function scheduleRegistry(append) {
@@ -1025,7 +1183,17 @@ export function getHubWebviewHtml(csp: string): string {
     }
   })();
 
+  function isTrustedHubPostMessageOrigin(origin) {
+    try {
+      if (origin === window.location.origin) return true;
+    } catch (e) {}
+    if (origin === "http://cloude.toolbox") return true;
+    if (typeof origin === "string" && origin.indexOf("vscode-webview://") === 0) return true;
+    return false;
+  }
+
   window.addEventListener("message", function (e) {
+    if (!isTrustedHubPostMessageOrigin(e.origin)) return;
     if (!e.data) return;
     if (e.data.type === "state") {
       state = e.data.payload;
@@ -1296,33 +1464,43 @@ export function getHubWebviewHtml(csp: string): string {
     renderContextHygiene();
     $("#root").appendChild(el("div", "section-title", "Cursor \\u2192 VS Code & Claude Code"));
 
+    var ij = state && state.hubHost === "intellij";
     var bridges = [
       {
         ic: "\\uD83D\\uDD0C",
         t: "Port Cursor MCP",
-        p: "cursor-mcp-vscode-port: Cursor ~/.cursor/mcp.json to VS Code mcp.json. Without npx runs the same CLI bundled with this extension (no npm fetch).",
+        p: ij
+          ? "Map Cursor ~/.cursor/mcp.json into VS Code-style mcp.json (bundled CLI + node)."
+          : "Map Cursor ~/.cursor/mcp.json into VS Code mcp.json. Primary: npx from the registry. Alternative: CLI bundled with the extension (offline).",
         c: "CloudeCodeToolBox.portCursorMcp",
-        b: "Run npx port",
+        b: "Run MCP port",
         manualCmd: "CloudeCodeToolBox.manualPortCursorMcpWithoutNpx",
-        manualLabel: "Without npx"
+        manualLabel: "Bundled CLI",
+        hideSecondOnIj: true,
       },
       {
         ic: "\\uD83E\\uDDE0",
         t: "Memory bank (cloude-code-memory-bank)",
-        p: "cloude-code-memory-bank: scaffold memory-bank/ and merge CLAUDE.md. Without npx runs the bundled Node CLI.",
+        p: ij
+          ? "Scaffold memory-bank/ and merge into CLAUDE.md (bundled CLI + node)."
+          : "Scaffold memory-bank/ and merge into CLAUDE.md. Primary: npx. Alternative: bundled CLI.",
         c: "CloudeCodeToolBox.initMemoryBank",
-        b: "Run npx init",
+        b: "Run memory bank init",
         manualCmd: "CloudeCodeToolBox.memoryBankWithoutNpx",
-        manualLabel: "Without npx"
+        manualLabel: "Bundled CLI",
+        hideSecondOnIj: true,
       },
       {
         ic: "\\uD83D\\uDD04",
         t: "Cursor rules to CLAUDE.md",
-        p: "cursor-rules-to-claude: .cursor/rules to CLAUDE.md and .claude/rules. Without npx runs the bundled Node CLI.",
+        p: ij
+          ? "Convert .cursor/rules into CLAUDE.md / .claude/rules (bundled CLI + node)."
+          : "Convert .cursor/rules into CLAUDE.md / .claude/rules. Primary: npx. Alternative: bundled CLI.",
         c: "CloudeCodeToolBox.syncCursorRules",
-        b: "Run converter",
+        b: "Run rules converter",
         manualCmd: "CloudeCodeToolBox.cursorRulesToClaudeWithoutNpx",
-        manualLabel: "Without npx"
+        manualLabel: "Bundled CLI",
+        hideSecondOnIj: true,
       },
       {
         ic: "\\uD83D\\uDCE5",
@@ -1331,8 +1509,9 @@ export function getHubWebviewHtml(csp: string): string {
         c: "CloudeCodeToolBox.migrateSkillsCursorToAgents",
         b: "Run migration",
         manualCmd: "CloudeCodeToolBox.revealSkillFoldersWithoutNpx",
-        manualLabel: "Open folders"
-      }
+        manualLabel: "Open folders",
+        hideSecondOnIj: false,
+      },
     ];
     bridges.forEach(function (h0) {
       var h = el("div", "hero");
@@ -1345,8 +1524,9 @@ export function getHubWebviewHtml(csp: string): string {
         vscode.postMessage({ type: "runCommand", command: h0.c });
       });
       row.appendChild(b1);
-      if (h0.manualCmd) {
-        var b3 = el("button", "btn", h0.manualLabel || "Without npx");
+      var showSecond = h0.manualCmd && !(ij && h0.hideSecondOnIj);
+      if (showSecond) {
+        var b3 = el("button", "btn", h0.manualLabel || "Second action");
         b3.addEventListener("click", function () {
           vscode.postMessage({ type: "runCommand", command: h0.manualCmd });
         });
@@ -1485,6 +1665,7 @@ export function getHubWebviewHtml(csp: string): string {
     }
     syncIntelAutoScanCheckbox();
     syncThinkingMachineModeCheckbox();
+    syncHubHostCopy();
 
     if (state.hubLoadError) {
       var warn = el("div", "callout");

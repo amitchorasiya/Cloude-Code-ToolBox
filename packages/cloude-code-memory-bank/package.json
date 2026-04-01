@@ -6,7 +6,7 @@
   "bin": {
     "cloude-code-memory-bank": "bin/cli.mjs"
   },
-  "files": ["bin", "templates", "NOTICE", "LICENSE", "README.md"],
+  "files": ["bin", "lib", "templates", "NOTICE", "LICENSE", "README.md"],
   "engines": {
     "node": ">=18"
   },

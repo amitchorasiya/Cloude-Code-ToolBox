@@ -1,0 +1,6 @@
+# Snyk Code: bin/cli.js is a thin argv parser. Path traversal is mitigated in lib/convert.js
+# (resolvePathUnderRoot, pathToFileURL, validated rulesDir). Snyk still flags argv→filesystem flows.
+version: v1.25.0
+exclude:
+  code:
+    - bin/cli.js

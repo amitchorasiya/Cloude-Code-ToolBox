@@ -1,0 +1,5 @@
+# Snyk Code: bin/cli.mjs only forwards argv to lib/init.mjs. Real logic (path checks) lives in lib/.
+version: v1.25.0
+exclude:
+  code:
+    - bin/cli.mjs

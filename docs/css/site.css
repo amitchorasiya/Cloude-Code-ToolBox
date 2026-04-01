@@ -230,6 +230,15 @@ a:hover {
   border-color: var(--shadow-brown-mid);
   box-shadow: var(--accent-glow-strong);
 }
+/* Second primary CTA (JetBrains) — distinct fill, same weight as VS Code */
+.btn-primary.btn-secondary-ide {
+  background: color-mix(in srgb, var(--terracotta) 55%, var(--sky, #7eb8da) 45%);
+  color: #0f1418;
+}
+.btn-primary.btn-secondary-ide:hover {
+  background: color-mix(in srgb, var(--terracotta-bright) 50%, var(--sky, #7eb8da) 50%);
+  color: #0a0e12;
+}
 .btn-ghost {
   border-color: var(--border);
   color: var(--muted);
